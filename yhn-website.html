@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Youth Hustle Network — Where Hustlers Meet Opportunities</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --black: #0a0a0a;
+    --dark: #111111;
+    --card: #161616;
+    --orange: #FF5C00;
+    --orange-glow: #ff7a2a;
+    --yellow: #FFD000;
+    --white: #f5f5f0;
+    --muted: #888;
+    --border: rgba(255,92,0,0.15);
+  }
+  *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--black); color: var(--white); font-family: 'DM Sans', sans-serif; overflow-x: hidden; }
+
+  /* NAV */
+  nav {
+    position: fixed; top:0; left:0; right:0; z-index:100;
+    display:flex; justify-content:space-between; align-items:center;
+    padding: 20px 6vw;
+    background: rgba(10,10,10,0.88);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--border);
+  }
+  .logo { font-family: 'Bebas Neue', sans-serif; font-size: 2rem; letter-spacing: 4px; color: var(--orange); }
+  .logo span { color: var(--yellow); }
+  .nav-cta {
+    background: var(--orange); color: #fff;
+    font-family: 'Syne', sans-serif; font-weight: 700; font-size: 0.82rem; letter-spacing: 1px;
+    padding: 10px 24px; border: none; cursor: pointer; text-decoration: none;
+    clip-path: polygon(6px 0%, 100% 0%, calc(100% - 6px) 100%, 0% 100%);
+    transition: background 0.2s;
+  }
+  .nav-cta:hover { background: var(--orange-glow); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh; display: flex; flex-direction: column; justify-content: center;
+    padding: 140px 6vw 80px; position: relative; overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute; inset:0;
+    background:
+      radial-gradient(ellipse 65% 55% at 85% 40%, rgba(255,92,0,0.13) 0%, transparent 70%),
+      radial-gradient(ellipse 40% 40% at 15% 85%, rgba(255,208,0,0.06) 0%, transparent 60%);
+  }
+  .hero-grid-lines {
+    position:absolute; inset:0; opacity:0.04;
+    background-image: linear-gradient(rgba(255,255,255,0.4) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(255,255,255,0.4) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+  .hero-tag {
+    display:inline-block; font-family:'Syne',sans-serif; font-size:0.75rem; font-weight:700;
+    letter-spacing:3px; text-transform:uppercase; color: var(--orange);
+    border: 1px solid var(--orange); padding: 6px 16px; margin-bottom: 28px; width:fit-content;
+    animation: fadeUp 0.8s ease both;
+  }
+  .hero h1 {
+    font-family:'Bebas Neue',sans-serif;
+    font-size: clamp(3.8rem, 11vw, 9.5rem);
+    line-height: 0.92; letter-spacing: 2px;
+    animation: fadeUp 0.9s 0.1s ease both;
+  }
+  .hero h1 .accent { color: var(--orange); }
+  .hero h1 .accent2 { color: var(--yellow); }
+  .hero-sub {
+    font-size: clamp(0.95rem, 1.8vw, 1.2rem); color: #aaa; max-width: 540px;
+    margin-top: 24px; line-height: 1.75; animation: fadeUp 1s 0.2s ease both;
+  }
+  .hero-ctas { display:flex; gap:16px; flex-wrap:wrap; margin-top: 40px; animation: fadeUp 1s 0.3s ease both; }
+  .btn-primary {
+    background: var(--orange); color: #fff;
+    font-family:'Syne',sans-serif; font-weight:700; font-size:0.92rem; letter-spacing:1px;
+    padding: 16px 36px; border:none; cursor:pointer; text-decoration:none;
+    clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+    transition: all 0.2s; display:inline-block;
+  }
+  .btn-primary:hover { background: var(--orange-glow); transform:translateY(-2px); }
+  .btn-outline {
+    background: transparent; color: var(--white);
+    font-family:'Syne',sans-serif; font-weight:600; font-size:0.92rem; letter-spacing:1px;
+    padding: 16px 36px; border: 1px solid rgba(255,255,255,0.2);
+    cursor:pointer; text-decoration:none;
+    clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+    transition: all 0.2s; display:inline-block;
+  }
+  .btn-outline:hover { border-color: var(--orange); color:var(--orange); }
+  .hero-stats {
+    display:flex; gap:48px; flex-wrap:wrap;
+    margin-top: 64px; padding-top: 40px;
+    border-top: 1px solid var(--border);
+    animation: fadeUp 1s 0.4s ease both;
+  }
+  .stat-num { font-family:'Bebas Neue',sans-serif; font-size: 2.8rem; color: var(--orange); line-height:1; }
+  .stat-label { font-size:0.78rem; color: var(--muted); letter-spacing:1px; text-transform:uppercase; margin-top:4px; }
+
+  /* IMAGE STRIP */
+  .image-strip { width:100%; overflow:hidden; height: 300px; background: var(--dark); position:relative; }
+  .strip-track {
+    display:flex; gap:10px; animation: scrollX 32s linear infinite;
+    width: max-content; height:100%;
+  }
+  .strip-track img { height:100%; width: 400px; object-fit:cover; filter: grayscale(15%) contrast(1.1); flex-shrink:0; }
+  .strip-overlay {
+    position:absolute; inset:0;
+    background: linear-gradient(90deg, var(--black) 0%, transparent 12%, transparent 88%, var(--black) 100%);
+  }
+
+  /* SECTIONS */
+  section { padding: 100px 6vw; }
+  .section-tag {
+    font-family:'Syne',sans-serif; font-size:0.73rem; font-weight:700;
+    letter-spacing:3px; text-transform:uppercase; color:var(--orange); margin-bottom:16px;
+  }
+  .section-title {
+    font-family:'Bebas Neue',sans-serif;
+    font-size: clamp(2.6rem, 6vw, 5.2rem); line-height:0.98; letter-spacing:1px;
+  }
+  .section-title .acc { color:var(--orange); }
+
+  /* PROBLEM */
+  .problem { background: var(--dark); }
+  .problem-grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(260px,1fr)); gap:2px; margin-top:60px; }
+  .problem-card {
+    background: var(--card); padding:40px 32px; position:relative; overflow:hidden;
+    transition: transform 0.3s;
+  }
+  .problem-card::before {
+    content:''; position:absolute; top:0;left:0;right:0; height:3px;
+    background:var(--orange); transform:scaleX(0); transform-origin:left; transition: transform 0.4s ease;
+  }
+  .problem-card:hover::before { transform:scaleX(1); }
+  .problem-card:hover { transform: translateY(-4px); }
+  .prob-icon { font-size:2rem; margin-bottom:20px; }
+  .prob-title { font-family:'Syne',sans-serif; font-weight:700; font-size:1.05rem; margin-bottom:10px; }
+  .prob-desc { color:#777; font-size:0.9rem; line-height:1.7; }
+
+  /* WHAT IS YHN */
+  .what-grid { display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center; margin-top:60px; }
+  @media(max-width:768px){ .what-grid{ grid-template-columns:1fr; gap:40px; } }
+  .what-img { position:relative; overflow:hidden; aspect-ratio:4/5; }
+  .what-img img { width:100%; height:100%; object-fit:cover; filter: contrast(1.1); }
+  .what-img-badge {
+    position:absolute; bottom:24px; left:24px;
+    background: var(--orange); color:#fff;
+    font-family:'Syne',sans-serif; font-weight:800; font-size:0.78rem;
+    letter-spacing:2px; text-transform:uppercase; padding:10px 20px;
+    clip-path: polygon(6px 0%, 100% 0%, calc(100% - 6px) 100%, 0% 100%);
+  }
+  .what-points { margin-top:36px; display:flex; flex-direction:column; gap:0; }
+  .what-point { display:flex; gap:16px; align-items:flex-start; padding:20px 0; border-bottom: 1px solid var(--border); }
+  .point-num { font-family:'Bebas Neue',sans-serif; font-size:2.2rem; color:rgba(255,92,0,0.35); line-height:1; flex-shrink:0; width:40px; }
+  .point-text h4 { font-family:'Syne',sans-serif; font-weight:700; font-size:0.97rem; margin-bottom:5px; }
+  .point-text p { color:#777; font-size:0.87rem; line-height:1.65; }
+
+  /* MARQUEE */
+  .marquee-section { background: var(--orange); padding:18px 0; overflow:hidden; }
+  .marquee-track { display:flex; animation: scrollX 18s linear infinite; width:max-content; }
+  .marquee-item {
+    font-family:'Bebas Neue',sans-serif; font-size:1.45rem; letter-spacing:3px;
+    color:#fff; padding:0 40px; white-space:nowrap; display:flex; align-items:center; gap:40px;
+  }
+  .marquee-dot { width:6px; height:6px; background:rgba(255,255,255,0.5); border-radius:50%; display:inline-block; }
+
+  /* BENEFITS */
+  .benefits { background: var(--dark); }
+  .benefits-grid { display:grid; grid-template-columns: repeat(auto-fit, minmax(280px,1fr)); gap:16px; margin-top:60px; }
+  .benefit-card {
+    background: var(--card); padding:36px 28px;
+    border: 1px solid var(--border); position:relative; overflow:hidden;
+    transition: transform 0.3s, border-color 0.3s;
+  }
+  .benefit-card:hover { transform:translateY(-6px); border-color:var(--orange); }
+  .benefit-card.featured { background: var(--orange); border-color: var(--orange); }
+  .benefit-icon { font-size:2rem; margin-bottom:20px; display:block; }
+  .benefit-title { font-family:'Syne',sans-serif; font-weight:800; font-size:1.1rem; margin-bottom:10px; }
+  .benefit-desc { font-size:0.88rem; line-height:1.68; color:#888; }
+  .benefit-card.featured .benefit-desc { color:rgba(255,255,255,0.85); }
+
+  /* HOW IT WORKS */
+  .steps { display:grid; grid-template-columns: repeat(auto-fit, minmax(200px,1fr)); margin-top:70px; position:relative; }
+  .step { padding:48px 28px; border-right:1px solid var(--border); position:relative; }
+  .step:last-child { border-right:none; }
+  @media(max-width:600px){ .step{ border-right:none; border-bottom:1px solid var(--border); } }
+  .step-num {
+    font-family:'Bebas Neue',sans-serif; font-size:5rem; line-height:1;
+    color: rgba(255,92,0,0.10); position:absolute; top:16px; right:16px;
+  }
+  .step-icon { font-size:2rem; margin-bottom:20px; }
+  .step-title { font-family:'Syne',sans-serif; font-weight:700; font-size:0.97rem; margin-bottom:8px; }
+  .step-desc { font-size:0.87rem; color:#666; line-height:1.68; }
+
+  /* MEMBERSHIP */
+  .membership { background: var(--dark); }
+  .membership-box {
+    margin-top:60px; background: var(--card); border:1px solid var(--border);
+    display:grid; grid-template-columns:1fr 1fr; overflow:hidden;
+  }
+  @media(max-width:700px){ .membership-box{ grid-template-columns:1fr; } }
+  .mem-left { padding:56px 48px; border-right:1px solid var(--border); }
+  @media(max-width:700px){ .mem-left{ border-right:none; border-bottom:1px solid var(--border); } }
+  .mem-price-strike { font-size:1.1rem; color:var(--muted); text-decoration:line-through; margin-bottom:2px; }
+  .mem-price { font-family:'Bebas Neue',sans-serif; font-size:5rem; line-height:1; color:var(--orange); }
+  .mem-price sup { font-size:2rem; vertical-align:super; }
+  .mem-badge {
+    display:inline-block; background:var(--yellow); color:var(--black);
+    font-family:'Syne',sans-serif; font-weight:800; font-size:0.73rem;
+    letter-spacing:2px; padding:4px 14px; text-transform:uppercase; margin-top:12px; margin-bottom:28px;
+  }
+  .mem-sub { color:#777; font-size:0.9rem; line-height:1.72; }
+  .mem-right { padding:56px 48px; }
+  .mem-perks { list-style:none; display:flex; flex-direction:column; gap:18px; }
+  .mem-perks li { display:flex; gap:14px; align-items:flex-start; font-size:0.91rem; line-height:1.5; color:#ccc; }
+  .perk-check { color:var(--orange); flex-shrink:0; margin-top:1px; font-size:1rem; }
+
+  /* WHO */
+  .who-desc { color:#777; font-size:0.97rem; line-height:1.8; max-width:680px; margin-top:24px; }
+  .who-grid { display:flex; flex-wrap:wrap; gap:10px; margin-top:44px; }
+  .who-tag {
+    font-family:'Syne',sans-serif; font-weight:600; font-size:0.88rem;
+    padding:11px 22px; border:1px solid var(--border); color:var(--white);
+    transition: all 0.2s; cursor:default;
+  }
+  .who-tag:hover { background:var(--orange); border-color:var(--orange); }
+
+  /* INQUIRY */
+  .inquiry { background: var(--dark); }
+  .form-wrap { display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:start; margin-top:60px; }
+  @media(max-width:800px){ .form-wrap{ grid-template-columns:1fr; gap:40px; } }
+  .form-left h3 { font-family:'Bebas Neue',sans-serif; font-size:3rem; line-height:1.05; margin-bottom:20px; }
+  .form-left p { color:#777; line-height:1.78; font-size:0.93rem; }
+  .contact-info { margin-top:36px; display:flex; flex-direction:column; gap:14px; }
+  .contact-row { display:flex; gap:12px; align-items:center; font-size:0.88rem; color:#888; }
+  .contact-icon { color:var(--orange); }
+  form { display:flex; flex-direction:column; gap:14px; }
+  .form-group { display:flex; flex-direction:column; gap:6px; }
+  .form-row { display:grid; grid-template-columns:1fr 1fr; gap:14px; }
+  @media(max-width:500px){ .form-row{ grid-template-columns:1fr; } }
+  label { font-family:'Syne',sans-serif; font-size:0.73rem; font-weight:700; letter-spacing:1px; text-transform:uppercase; color:#666; }
+  input, select, textarea {
+    background: var(--black); border: 1px solid rgba(255,255,255,0.07); color:var(--white);
+    padding:13px 16px; font-family:'DM Sans',sans-serif; font-size:0.93rem;
+    outline:none; transition: border-color 0.2s; width:100%;
+  }
+  input:focus, select:focus, textarea:focus { border-color:var(--orange); }
+  select option { background:var(--card); }
+  textarea { resize:vertical; min-height:110px; }
+  .form-submit {
+    background:var(--orange); color:#fff;
+    font-family:'Syne',sans-serif; font-weight:700; font-size:0.97rem; letter-spacing:1px;
+    padding:17px 36px; border:none; cursor:pointer;
+    clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+    transition: all 0.2s; margin-top:6px; width:100%;
+  }
+  .form-submit:hover { background:var(--orange-glow); }
+
+  /* FOOTER */
+  footer { background: var(--black); padding:60px 6vw 30px; border-top:1px solid var(--border); }
+  .footer-top {
+    display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:40px;
+    padding-bottom:40px; border-bottom:1px solid var(--border);
+  }
+  .footer-logo { font-family:'Bebas Neue',sans-serif; font-size:2.4rem; letter-spacing:4px; color:var(--orange); }
+  .footer-logo span { color:var(--yellow); }
+  .footer-tagline { color:#555; font-size:0.86rem; margin-top:6px; }
+  .footer-links { display:flex; gap:28px; flex-wrap:wrap; align-items:center; }
+  .footer-links a { color:#555; text-decoration:none; font-size:0.86rem; font-family:'Syne',sans-serif; font-weight:600; transition: color 0.2s; }
+  .footer-links a:hover { color:var(--orange); }
+  .footer-bottom { display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:12px; padding-top:28px; }
+  .footer-copy { font-size:0.8rem; color:#333; }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp { from { opacity:0; transform:translateY(30px); } to { opacity:1; transform:translateY(0); } }
+  @keyframes scrollX { from { transform:translateX(0); } to { transform:translateX(-50%); } }
+  .reveal { opacity:0; transform:translateY(28px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .reveal.visible { opacity:1; transform:translateY(0); }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="logo">Y<span>H</span>N</div>
+  <a href="https://forms.google.com" target="_blank" class="nav-cta">JOIN NOW — ₹499</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid-lines"></div>
+  <div class="hero-tag">🔥 Bangalore's Private Hustler Network</div>
+  <h1>
+    WHERE<br>
+    <span class="accent">HUSTLERS</span><br>
+    MEET <span class="accent2">OPPORTUNITIES</span>
+  </h1>
+  <p class="hero-sub">
+    Youth Hustle Network is Bangalore's private community for ambitious young people — access real gigs, internships, workshops, and offline events with like-minded hustlers.
+  </p>
+  <div class="hero-ctas">
+    <a href="https://forms.google.com" target="_blank" class="btn-primary">Register Now — ₹499 Early Bird</a>
+    <a href="#inquiry" class="btn-outline">Got Questions?</a>
+  </div>
+  <div class="hero-stats">
+    <div><div class="stat-num">₹499</div><div class="stat-label">Early Bird Price</div></div>
+    <div><div class="stat-num">2×</div><div class="stat-label">Events / Month</div></div>
+    <div><div class="stat-num">2×</div><div class="stat-label">Workshops / Month</div></div>
+    <div><div class="stat-num">BLR</div><div class="stat-label">Based in Bangalore</div></div>
+  </div>
+</section>
+
+<!-- IMAGE STRIP -->
+<div class="image-strip">
+  <div class="strip-track">
+    <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?w=800&q=80" alt="Collaboration"/>
+    <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=800&q=80" alt="Team"/>
+    <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800&q=80" alt="Professionals"/>
+    <img src="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?w=800&q=80" alt="Working"/>
+    <img src="https://images.unsplash.com/photo-1543269865-cbf427effbad?w=800&q=80" alt="Event"/>
+    <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=800&q=80" alt="Startup"/>
+    <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?w=800&q=80" alt="Collaboration"/>
+    <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=800&q=80" alt="Team"/>
+    <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?w=800&q=80" alt="Professionals"/>
+    <img src="https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca?w=800&q=80" alt="Working"/>
+    <img src="https://images.unsplash.com/photo-1543269865-cbf427effbad?w=800&q=80" alt="Event"/>
+    <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=800&q=80" alt="Startup"/>
+  </div>
+  <div class="strip-overlay"></div>
+</div>
+
+<!-- PROBLEM -->
+<section class="problem">
+  <div class="section-tag reveal">The Problem</div>
+  <h2 class="section-title reveal">EVERY HUSTLER<br>FACES <span class="acc">THIS</span></h2>
+  <div class="problem-grid">
+    <div class="problem-card reveal">
+      <div class="prob-icon">😶</div>
+      <div class="prob-title">No Real Network</div>
+      <p class="prob-desc">LinkedIn is crowded and cold. College circles are limited. You want to meet people who are actually building something — but there's no dedicated space for that in Bangalore.</p>
+    </div>
+    <div class="problem-card reveal">
+      <div class="prob-icon">💸</div>
+      <div class="prob-title">No Gig Opportunities</div>
+      <p class="prob-desc">You have skills — design, content, video, marketing — but nobody's giving you a real chance. Platforms are saturated and impersonal. Referrals don't exist yet.</p>
+    </div>
+    <div class="problem-card reveal">
+      <div class="prob-icon">📚</div>
+      <div class="prob-title">No Ground-Level Mentorship</div>
+      <p class="prob-desc">You're learning online but have no one to guide you in person. No workshops, no real feedback, no access to people who've actually done it.</p>
+    </div>
+    <div class="problem-card reveal">
+      <div class="prob-icon">🏠</div>
+      <div class="prob-title">No Real Community IRL</div>
+      <p class="prob-desc">Online groups are noisy and passive. You want real conversations, real energy, real people in a room together. That space doesn't really exist for Bangalore's young hustlers.</p>
+    </div>
+  </div>
+</section>
+
+<!-- WHAT IS YHN -->
+<section id="about">
+  <div class="what-grid">
+    <div class="what-img reveal">
+      <img src="https://images.unsplash.com/photo-1556761175-b413da4baf72?w=900&q=80" alt="YHN Community"/>
+      <div class="what-img-badge">Est. Bangalore 2025</div>
+    </div>
+    <div>
+      <div class="section-tag reveal">What is YHN?</div>
+      <h2 class="section-title reveal">NOT A GROUP.<br>A <span class="acc">MOVEMENT</span><br>FOR DOERS.</h2>
+      <p style="color:#777;margin-top:20px;line-height:1.8;font-size:0.93rem;" class="reveal">
+        Youth Hustle Network is a private, curated community for young hustlers in Bangalore — serious about growing through real gigs, internships, workshops, and powerful offline events. It's a talent marketplace meets community brand.
+      </p>
+      <div class="what-points">
+        <div class="what-point reveal">
+          <div class="point-num">01</div>
+          <div class="point-text">
+            <h4>Real Gig Marketplace</h4>
+            <p>Brands and startups post paid gigs — event promoters, content creators, photographers, designers. Members get the work. YHN takes a small commission.</p>
+          </div>
+        </div>
+        <div class="what-point reveal">
+          <div class="point-num">02</div>
+          <div class="point-text">
+            <h4>Offline Events Twice a Month</h4>
+            <p>Hustle meetups, networking nights, founder talks, skill-swap sessions — exclusive for YHN members, in Bangalore, with real energy.</p>
+          </div>
+        </div>
+        <div class="what-point reveal">
+          <div class="point-num">03</div>
+          <div class="point-text">
+            <h4>Internship Access</h4>
+            <p>Direct connections to Bangalore startups and D2C brands looking for driven young talent. No cold applications, no ghosting — warm introductions.</p>
+          </div>
+        </div>
+        <div class="what-point reveal">
+          <div class="point-num">04</div>
+          <div class="point-text">
+            <h4>Bi-Weekly Skill Workshops</h4>
+            <p>Hands-on sessions on freelancing, AI tools, content creation, startup strategy, personal branding — led by practitioners, not just speakers.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MARQUEE -->
+<div class="marquee-section">
+  <div class="marquee-track">
+    <div class="marquee-item">GIGS <span class="marquee-dot"></span> INTERNSHIPS <span class="marquee-dot"></span> WORKSHOPS <span class="marquee-dot"></span> NETWORKING <span class="marquee-dot"></span> OPPORTUNITIES <span class="marquee-dot"></span> COMMUNITY <span class="marquee-dot"></span> BANGALORE <span class="marquee-dot"></span></div>
+    <div class="marquee-item">GIGS <span class="marquee-dot"></span> INTERNSHIPS <span class="marquee-dot"></span> WORKSHOPS <span class="marquee-dot"></span> NETWORKING <span class="marquee-dot"></span> OPPORTUNITIES <span class="marquee-dot"></span> COMMUNITY <span class="marquee-dot"></span> BANGALORE <span class="marquee-dot"></span></div>
+  </div>
+</div>
+
+<!-- BENEFITS -->
+<section class="benefits" id="benefits">
+  <div class="section-tag reveal">Member Benefits</div>
+  <h2 class="section-title reveal">WHAT YOU <span class="acc">GET</span></h2>
+  <div class="benefits-grid">
+    <div class="benefit-card reveal">
+      <span class="benefit-icon">🎯</span>
+      <div class="benefit-title">Real Gig Opportunities</div>
+      <p class="benefit-desc">Get matched with brands and startups for paid work — events, content, photography, promotions, marketing. Your skill earns real money.</p>
+    </div>
+    <div class="benefit-card featured reveal">
+      <span class="benefit-icon">⚡</span>
+      <div class="benefit-title">Offline Events Twice a Month</div>
+      <p class="benefit-desc">Two exclusive events monthly — hustle meetups, networking mixers, skill swaps — only for YHN members, in your city, with people who are doing the work.</p>
+    </div>
+    <div class="benefit-card reveal">
+      <span class="benefit-icon">💼</span>
+      <div class="benefit-title">Internship Placements</div>
+      <p class="benefit-desc">Direct access to internships at Bangalore startups and D2C brands. We make the introduction. You take it from there.</p>
+    </div>
+    <div class="benefit-card reveal">
+      <span class="benefit-icon">🛠️</span>
+      <div class="benefit-title">Hands-On Workshops</div>
+      <p class="benefit-desc">Bi-weekly sessions on freelancing, AI tools, content creation, marketing, startup fundamentals. Practical. Actionable. Real.</p>
+    </div>
+    <div class="benefit-card reveal">
+      <span class="benefit-icon">🤝</span>
+      <div class="benefit-title">Collaborator Network</div>
+      <p class="benefit-desc">Find your co-founder, creative partner, or collab buddy. The YHN member base is skill-tagged and curated for easy discovery.</p>
+    </div>
+    <div class="benefit-card reveal">
+      <span class="benefit-icon">📣</span>
+      <div class="benefit-title">Community Spotlight</div>
+      <p class="benefit-desc">Get featured on YHN's social channels as a member hustler. Your work, your story — amplified to our growing Bangalore audience.</p>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how">
+  <div class="section-tag reveal">How It Works</div>
+  <h2 class="section-title reveal">JOIN IN <span class="acc">4 STEPS</span></h2>
+  <div class="steps">
+    <div class="step reveal">
+      <div class="step-num">01</div>
+      <div class="step-icon">💳</div>
+      <div class="step-title">Pay ₹499 Early Bird</div>
+      <p class="step-desc">One-time founding member fee. Pay via UPI and register through the Google Form. Upload your payment screenshot to confirm.</p>
+    </div>
+    <div class="step reveal">
+      <div class="step-num">02</div>
+      <div class="step-icon">📝</div>
+      <div class="step-title">Fill Registration Form</div>
+      <p class="step-desc">Share your skills, availability, and what you're looking for. This helps us match you to the right gigs and collaborators instantly.</p>
+    </div>
+    <div class="step reveal">
+      <div class="step-num">03</div>
+      <div class="step-icon">✅</div>
+      <div class="step-title">Get Approved & Onboarded</div>
+      <p class="step-desc">We verify your payment and add you to the private YHN community within 24 hours. Welcome kit and next event details — ready to go.</p>
+    </div>
+    <div class="step reveal">
+      <div class="step-num">04</div>
+      <div class="step-icon">🚀</div>
+      <div class="step-title">Access Opportunities</div>
+      <p class="step-desc">Gigs, events, workshops, internships. Your first opportunity could arrive within the first week of joining.</p>
+    </div>
+  </div>
+</section>
+
+<!-- MEMBERSHIP -->
+<section class="membership">
+  <div class="section-tag reveal">Membership</div>
+  <h2 class="section-title reveal">ONE PRICE.<br><span class="acc">REAL VALUE.</span></h2>
+  <div class="membership-box reveal">
+    <div class="mem-left">
+      <div class="mem-price-strike">₹999</div>
+      <div class="mem-price"><sup>₹</sup>499</div>
+      <div class="mem-badge">🔥 Early Bird Offer</div>
+      <p class="mem-sub">Founding member price for the first YHN Bangalore cohort. Price goes up after the launch batch fills. Lock in now and be part of the founding community.</p>
+      <div style="margin-top:36px;">
+        <a href="https://forms.google.com" target="_blank" class="btn-primary">Claim Your Spot →</a>
+      </div>
+    </div>
+    <div class="mem-right">
+      <ul class="mem-perks">
+        <li><span class="perk-check">●</span> Access to real paid gig opportunities every month</li>
+        <li><span class="perk-check">●</span> 2 exclusive offline events per month in Bangalore</li>
+        <li><span class="perk-check">●</span> 2 hands-on skill workshops every month</li>
+        <li><span class="perk-check">●</span> Internship referrals from partner brands &amp; startups</li>
+        <li><span class="perk-check">●</span> Access to the private YHN member community</li>
+        <li><span class="perk-check">●</span> Skill-match collaboration discovery</li>
+        <li><span class="perk-check">●</span> Community spotlight features on YHN social channels</li>
+        <li><span class="perk-check">●</span> Founding member badge &amp; priority in all future cohorts</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- WHO SHOULD JOIN -->
+<section id="who">
+  <div class="section-tag reveal">Who Should Join</div>
+  <h2 class="section-title reveal">BUILT FOR <span class="acc">YOU IF...</span></h2>
+  <p class="who-desc reveal">You're young, ambitious, and done waiting for opportunities to land in your lap. You're in Bangalore and you want to be in a room with people who are actually building something — and you want real outcomes, not just inspiration.</p>
+  <div class="who-grid reveal">
+    <div class="who-tag">🎓 College Students</div>
+    <div class="who-tag">🎨 Designers & Creatives</div>
+    <div class="who-tag">📹 Videographers & Editors</div>
+    <div class="who-tag">📱 Social Media Hustlers</div>
+    <div class="who-tag">💻 Freelance Developers</div>
+    <div class="who-tag">📣 Marketers & Promoters</div>
+    <div class="who-tag">🚀 Aspiring Founders</div>
+    <div class="who-tag">✍️ Content Writers</div>
+    <div class="who-tag">🎤 Emcees & Speakers</div>
+    <div class="who-tag">📷 Photographers</div>
+    <div class="who-tag">🤳 Micro Influencers</div>
+    <div class="who-tag">⚡ Side Hustlers</div>
+  </div>
+</section>
+
+<!-- INQUIRY FORM -->
+<section class="inquiry" id="inquiry">
+  <div class="section-tag reveal">Still Have Questions?</div>
+  <h2 class="section-title reveal">DROP US A <span class="acc">MESSAGE</span></h2>
+  <div class="form-wrap">
+    <div class="form-left reveal">
+      <h3>WE'LL GET BACK<br>TO YOU ON<br><span style="color:var(--orange)">WHATSAPP.</span></h3>
+      <p>Fill in your details and your message goes directly to us on WhatsApp. We respond fast — usually within a few hours.</p>
+      <div class="contact-info">
+        <div class="contact-row"><span class="contact-icon">📍</span>Bangalore, Karnataka, India</div>
+        <div class="contact-row"><span class="contact-icon">📱</span>+91 97889 96664</div>
+        <div class="contact-row"><span class="contact-icon">📸</span>@youthhustlenetwork</div>
+      </div>
+      <div style="margin-top:36px;">
+        <a href="https://forms.google.com" target="_blank" class="btn-primary">Already Decided? Register →</a>
+      </div>
+    </div>
+    <div class="reveal">
+      <form id="inquiryForm">
+        <div class="form-row">
+          <div class="form-group">
+            <label>Full Name *</label>
+            <input type="text" id="fname" placeholder="Your name" required/>
+          </div>
+          <div class="form-group">
+            <label>Age *</label>
+            <input type="number" id="fage" placeholder="e.g. 22" min="16" max="35" required/>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="form-group">
+            <label>Phone Number *</label>
+            <input type="tel" id="fphone" placeholder="+91 XXXXX XXXXX" required/>
+          </div>
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" id="femail" placeholder="you@email.com"/>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Your Primary Skill *</label>
+          <select id="fskill" required>
+            <option value="" disabled selected>Select your main skill</option>
+            <option>Design & Branding</option>
+            <option>Content Writing</option>
+            <option>Video Editing & Production</option>
+            <option>Photography</option>
+            <option>Social Media Marketing</option>
+            <option>Web / App Development</option>
+            <option>Event Management</option>
+            <option>Sales & Promotions</option>
+            <option>Influencer / Content Creator</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Why do you want to join YHN? *</label>
+          <textarea id="fwhy" placeholder="Tell us what you're looking for — gigs, network, workshops, internships, events..." required></textarea>
+        </div>
+        <button type="submit" class="form-submit">📲 Send Message on WhatsApp →</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div>
+      <div class="footer-logo">Y<span>H</span>N</div>
+      <div class="footer-tagline">Where Hustlers Meet Opportunities — Bangalore, India</div>
+    </div>
+    <div class="footer-links">
+      <a href="#about">About</a>
+      <a href="#benefits">Benefits</a>
+      <a href="#how">How It Works</a>
+      <a href="#who">Who Joins</a>
+      <a href="#inquiry">Contact</a>
+      <a href="https://forms.google.com" target="_blank" style="color:var(--orange);">Register Now →</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <div class="footer-copy">© 2025 Youth Hustle Network. All rights reserved. Bangalore, India.</div>
+    <div class="footer-copy">₹499 Early Bird · Limited Founding Spots</div>
+  </div>
+</footer>
+
+<script>
+  // Scroll reveal
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if(e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.reveal').forEach(r => observer.observe(r));
+
+  // WhatsApp inquiry form
+  document.getElementById('inquiryForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const name  = document.getElementById('fname').value.trim();
+    const age   = document.getElementById('fage').value.trim();
+    const phone = document.getElementById('fphone').value.trim();
+    const email = document.getElementById('femail').value.trim();
+    const skill = document.getElementById('fskill').value;
+    const why   = document.getElementById('fwhy').value.trim();
+    if(!name || !age || !phone || !skill || !why) { alert('Please fill all required fields.'); return; }
+    const msg =
+      `🔥 *YHN Enquiry*\n\n` +
+      `👤 *Name:* ${name}\n` +
+      `🎂 *Age:* ${age}\n` +
+      `📱 *Phone:* ${phone}\n` +
+      `📧 *Email:* ${email || 'Not provided'}\n` +
+      `🛠️ *Skill:* ${skill}\n\n` +
+      `💬 *Why YHN:*\n${why}\n\n` +
+      `_Sent via YHN Website_`;
+    window.open(`https://wa.me/919788996664?text=${encodeURIComponent(msg)}`, '_blank');
+  });
+</script>
+</body>
+</html>
