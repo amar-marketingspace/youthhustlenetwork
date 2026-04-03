@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Terms & Conditions — Youth Hustle Network</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --black: #0a0a0a;
+    --dark: #111111;
+    --card: #161616;
+    --orange: #FF5C00;
+    --yellow: #FFD000;
+    --white: #f5f5f0;
+    --muted: #888;
+    --subtle: #555;
+    --border: rgba(255,92,0,0.15);
+    --border-dim: rgba(255,255,255,0.05);
+  }
+  *, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+  html { scroll-behavior:smooth; }
+  body { background:var(--black); color:var(--white); font-family:'DM Sans',sans-serif; }
+
+  /* NAV */
+  nav {
+    position:fixed; top:0; left:0; right:0; z-index:100;
+    display:flex; justify-content:space-between; align-items:center;
+    padding:20px 6vw;
+    background:rgba(10,10,10,0.92);
+    backdrop-filter:blur(14px);
+    border-bottom:1px solid var(--border);
+  }
+  .logo { font-family:'Bebas Neue',sans-serif; font-size:2rem; letter-spacing:4px; color:var(--orange); text-decoration:none; }
+  .logo span { color:var(--yellow); }
+  .back-link {
+    font-family:'Syne',sans-serif; font-weight:700; font-size:0.8rem; letter-spacing:1px;
+    color:var(--muted); text-decoration:none; transition:color 0.2s;
+  }
+  .back-link:hover { color:var(--orange); }
+
+  /* HERO */
+  .page-hero {
+    padding:140px 6vw 60px;
+    border-bottom:1px solid var(--border);
+    background:var(--dark);
+    position:relative; overflow:hidden;
+  }
+  .page-hero::before {
+    content:'';
+    position:absolute; inset:0;
+    background:radial-gradient(ellipse 50% 60% at 90% 50%, rgba(255,92,0,0.08) 0%, transparent 70%);
+  }
+  .hero-tag {
+    font-family:'Syne',sans-serif; font-weight:700; font-size:0.72rem;
+    letter-spacing:3px; text-transform:uppercase; color:var(--orange);
+    border:1px solid var(--orange); padding:5px 14px;
+    display:inline-block; margin-bottom:20px; position:relative;
+  }
+  .page-hero h1 {
+    font-family:'Bebas Neue',sans-serif;
+    font-size:clamp(3rem, 7vw, 6rem);
+    line-height:0.95; letter-spacing:2px; position:relative;
+  }
+  .page-hero h1 span { color:var(--orange); }
+  .page-hero-meta {
+    margin-top:24px; display:flex; gap:32px; flex-wrap:wrap; position:relative;
+  }
+  .meta-item { font-size:0.82rem; color:var(--muted); }
+  .meta-item strong { color:var(--white); font-weight:500; display:block; font-size:0.78rem; font-family:'Syne',sans-serif; letter-spacing:1px; text-transform:uppercase; margin-bottom:2px; }
+
+  /* TOC */
+  .toc-wrap {
+    padding:48px 6vw;
+    background:var(--card);
+    border-bottom:1px solid var(--border-dim);
+  }
+  .toc-label { font-family:'Syne',sans-serif; font-weight:700; font-size:0.68rem; letter-spacing:3px; text-transform:uppercase; color:var(--orange); margin-bottom:20px; }
+  .toc-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(240px,1fr)); gap:6px; }
+  .toc-item {
+    font-size:0.82rem; color:var(--muted); text-decoration:none;
+    padding:8px 12px; border:1px solid var(--border-dim);
+    transition:all 0.2s; display:flex; align-items:center; gap:10px;
+  }
+  .toc-item:hover { color:var(--orange); border-color:var(--border); }
+  .toc-num { font-family:'Bebas Neue',sans-serif; font-size:1rem; color:rgba(255,92,0,0.35); }
+
+  /* CONTENT */
+  .content-wrap { padding:0 6vw 100px; max-width:900px; }
+
+  .legal-section { padding:60px 0; border-bottom:1px solid var(--border-dim); }
+  .legal-section:last-of-type { border-bottom:none; }
+
+  .section-anchor { display:block; height:80px; margin-top:-80px; visibility:hidden; }
+
+  .section-header { margin-bottom:28px; }
+  .section-num { font-family:'Bebas Neue',sans-serif; font-size:0.9rem; letter-spacing:2px; color:rgba(255,92,0,0.4); margin-bottom:4px; }
+  .section-title { font-family:'Bebas Neue',sans-serif; font-size:1.9rem; letter-spacing:1px; color:var(--white); line-height:1; }
+  .section-title span { color:var(--orange); }
+
+  /* THE SMALL PRINT TEXT — legally present, visually de-emphasised */
+  .legal-body {
+    font-size:0.72rem;
+    line-height:1.75;
+    color:#4a4a4a;
+    font-family:'DM Sans',sans-serif;
+    font-weight:300;
+    letter-spacing:0.01em;
+  }
+  .legal-body p { margin-bottom:12px; }
+  .legal-body p:last-child { margin-bottom:0; }
+  .legal-body strong {
+    font-weight:400;
+    color:#555;
+  }
+  .legal-body ul { padding-left:16px; margin-bottom:12px; }
+  .legal-body ul li { margin-bottom:6px; list-style:disc; }
+  .legal-body ol { padding-left:16px; margin-bottom:12px; }
+  .legal-body ol li { margin-bottom:6px; }
+
+  /* KEY CALLOUT — important terms shown visibly */
+  .key-callout {
+    border-left:2px solid var(--orange);
+    padding:16px 20px;
+    background:rgba(255,92,0,0.05);
+    margin-bottom:20px;
+  }
+  .key-callout p {
+    font-family:'Syne',sans-serif;
+    font-size:0.82rem;
+    font-weight:600;
+    color:rgba(255,92,0,0.85);
+    line-height:1.65;
+    letter-spacing:0.02em;
+  }
+
+  /* FOOTER */
+  footer {
+    background:var(--dark);
+    padding:40px 6vw 30px;
+    border-top:1px solid var(--border);
+  }
+  .footer-inner { display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px; }
+  .footer-logo { font-family:'Bebas Neue',sans-serif; font-size:1.8rem; letter-spacing:4px; color:var(--orange); }
+  .footer-logo span { color:var(--yellow); }
+  .footer-copy { font-size:0.75rem; color:#333; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="yhn-website.html" class="logo">Y<span>H</span>N</a>
+  <a href="yhn-website.html" class="back-link">← Back to Website</a>
+</nav>
+
+<!-- HERO -->
+<div class="page-hero">
+  <div class="hero-tag">Legal</div>
+  <h1>TERMS, CONDITIONS<br>&amp; <span>PRIVACY POLICY</span></h1>
+  <div class="page-hero-meta">
+    <div class="meta-item"><strong>Effective Date</strong>1st January 2025</div>
+    <div class="meta-item"><strong>Last Updated</strong>1st January 2025</div>
+    <div class="meta-item"><strong>Jurisdiction</strong>Bangalore, Karnataka, India</div>
+    <div class="meta-item"><strong>Governing Law</strong>Laws of the Republic of India</div>
+  </div>
+</div>
+
+<!-- TOC -->
+<div class="toc-wrap">
+  <div class="toc-label">Contents</div>
+  <div class="toc-grid">
+    <a href="#s1" class="toc-item"><span class="toc-num">01</span> About Youth Hustle Network</a>
+    <a href="#s2" class="toc-item"><span class="toc-num">02</span> Acceptance of Terms</a>
+    <a href="#s3" class="toc-item"><span class="toc-num">03</span> Eligibility</a>
+    <a href="#s4" class="toc-item"><span class="toc-num">04</span> Membership &amp; Registration Fees</a>
+    <a href="#s5" class="toc-item"><span class="toc-num">05</span> No Refund Policy</a>
+    <a href="#s6" class="toc-item"><span class="toc-num">06</span> Events &amp; Workshops</a>
+    <a href="#s7" class="toc-item"><span class="toc-num">07</span> Gig Opportunities</a>
+    <a href="#s8" class="toc-item"><span class="toc-num">08</span> Internship Placements</a>
+    <a href="#s9" class="toc-item"><span class="toc-num">09</span> Member Conduct</a>
+    <a href="#s10" class="toc-item"><span class="toc-num">10</span> Intellectual Property</a>
+    <a href="#s11" class="toc-item"><span class="toc-num">11</span> Limitation of Liability</a>
+    <a href="#s12" class="toc-item"><span class="toc-num">12</span> Privacy Policy</a>
+    <a href="#s13" class="toc-item"><span class="toc-num">13</span> Data Collection &amp; Use</a>
+    <a href="#s14" class="toc-item"><span class="toc-num">14</span> Data Storage &amp; Security</a>
+    <a href="#s15" class="toc-item"><span class="toc-num">15</span> Third-Party Platforms</a>
+    <a href="#s16" class="toc-item"><span class="toc-num">16</span> Termination</a>
+    <a href="#s17" class="toc-item"><span class="toc-num">17</span> Amendments</a>
+    <a href="#s18" class="toc-item"><span class="toc-num">18</span> Governing Law &amp; Disputes</a>
+    <a href="#s19" class="toc-item"><span class="toc-num">19</span> Contact Information</a>
+  </div>
+</div>
+
+<!-- CONTENT -->
+<div class="content-wrap">
+
+  <!-- PREAMBLE -->
+  <div class="legal-section">
+    <div class="key-callout">
+      <p>Please read these Terms and Conditions and Privacy Policy carefully before registering with or using any services offered by Youth Hustle Network. By completing registration and making payment, you confirm that you have read, understood, and agree to be bound by all terms set forth in this document. If you do not agree to these terms, you must not register or participate in any YHN services.</p>
+    </div>
+    <div class="legal-body">
+      <p>this document ("terms") constitutes a legally binding agreement between you ("member", "user", "participant") and youth hustle network ("yhn", "we", "us", "our"), an unregistered community initiative operating under the trade name youth hustle network, with its principal place of operations in bangalore, karnataka, india. these terms govern your access to and use of all yhn services, platforms, events, digital communications, community groups, gig opportunities, workshop sessions, internship referrals, and any other offerings made available by yhn from time to time. these terms are governed by and shall be construed in accordance with the laws of the republic of india, including but not limited to the information technology act, 2000, the information technology (amendment) act, 2008, the consumer protection act, 2019, the indian contract act, 1872, and all applicable rules and regulations made thereunder.</p>
+    </div>
+  </div>
+
+  <!-- S1 -->
+  <div class="legal-section">
+    <span class="section-anchor" id="s1"></span>
+    <div class="section-header">
+      <div class="section-num">01</div>
+      <div class="section-title">ABOUT YOUTH <span>HUSTLE NETWORK</span></div>
+    </div>
+    <div class="legal-body">
+      <p>youth hustle network (hereinafter referred to as "yhn") is a private offline community initiative based in bangalore, karnataka, india. yhn operates as a platform that facilitates networking, collaboration, skill development, gig matching, and community-building among young individuals residing in or near bangalore. yhn is not a registered company, firm, or society under any applicable indian law as of the effective date of these terms. yhn operates informally as a community initiative and does not hold any governmental, regulatory, or statutory recognition unless explicitly stated. all representations made on the yhn website, social media handles, and communication channels are made on a best-effort basis and are subject to the disclaimers, limitations, and conditions set out in these terms.</p>
+      <p>yhn reserves the right to modify, suspend, restructure, expand, or discontinue any aspect of its operations, offerings, events, membership structure, fee schedule, or community programs at any time and at its sole discretion, with or without prior notice to members. the existence of yhn as a community initiative does not constitute a guarantee of continuity of services for any specific duration. membership in yhn does not create any employer-employee relationship, partnership, agency, or joint venture between yhn and any member.</p>
+    </div>
+  </div>
+
+  <!-- S2 -->
+  <div class="legal-section">
+    <span class="section-anchor" id="s2"></span>
+    <div class="section-header">
+      <div class="section-num">02</div>
+      <div class="section-title">ACCEPTANCE <span>OF TERMS</span></div>
+    </div>
+    <div class="legal-body">
+      <p>by accessing the yhn website, submitting a registration form, making a payment towards membership, joining any yhn-affiliated communication group including but not limited to whatsapp communities, instagram accounts, or any other platform, or attending any yhn event, workshop, meetup, or session, you unconditionally and irrevocably agree to be bound by these terms in their entirety. your acceptance of these terms is deemed effective from the moment you submit your registration or make a payment, whichever occurs first.</p>
+      <p>if you are accessing yhn services on behalf of a minor aged between 16 and 18 years, you as the parent or legal guardian agree to these terms on behalf of the minor and accept full responsibility for the minor's conduct and participation within the yhn community. yhn shall not be liable for any disputes arising out of misrepresentation of age or identity at the time of registration.</p>
+      <p>these terms supersede all prior oral or written representations, agreements, or understandings between you and yhn with respect to the subject matter hereof. yhn's failure to enforce any provision of these terms shall not constitute a waiver of yhn's right to enforce such provision in the future.</p>
+    </div>
+  </div>
+
+  <!-- S3 -->
+  <div class="legal-section">
+    <span class="section-anchor" id="s3"></span>
+    <div class="section-header">
+      <div class="section-num">03</div>
+      <div class="section-title">ELIGIBILITY</div>
+    </div>
+    <div class="legal-body">
+      <p>membership in yhn is open to individuals who are at least 16 years of age at the time of registration. individuals between the ages of 16 and 18 years must obtain the prior written or documented consent of a parent or legal guardian before registering. by registering, individuals in this age group represent and warrant that such consent has been obtained. yhn reserves the right to request proof of parental consent and to terminate membership without refund if such consent cannot be demonstrated upon request.</p>
+      <p>membership is primarily intended for residents of bangalore, karnataka, india, given the offline and location-specific nature of yhn events and activities. yhn does not guarantee provision of offline event access to members residing outside bangalore. members residing outside bangalore may register at their own discretion but acknowledge that their access to offline events, meetups, and gig opportunities may be significantly limited or entirely unavailable based on their geographic location. no claim for refund shall arise on account of inability to attend offline events due to geographic constraints.</p>
+      <p>yhn reserves the absolute right to refuse membership to any individual at its sole discretion without being required to provide any reason or justification for such refusal. in such cases, any registration fee paid shall be refunded to the applicant within a reasonable time. eligibility does not guarantee acceptance into the yhn community.</p>
+    </div>
+  </div>
+
+  <!-- S4 -->
+  <div class="legal-section">
+    <span class="section-anchor" id="s4"></span>
+    <div class="section-header">
+      <div class="section-num">04</div>
+      <div class="section-title">MEMBERSHIP &amp; <span>REGISTRATION FEES</span></div>
+    </div>
+    <div class="key-callout">
+      <p>Registration fees are subject to change at any time without prior notice. The current early bird price of ₹499 is a limited-period offer and may be revised to ₹999 or any other amount at YHN's sole discretion. Paying the current advertised price does not lock in any future pricing for renewals or upgrades.</p>
+    </div>
+    <div class="legal-body">
+      <p>membership in yhn requires payment of a one-time registration fee as communicated on the yhn website or through its official communication channels at the time of registration. the fee structure is as follows as of the effective date of these terms: an early bird founding member fee of indian rupees four hundred and ninety-nine (₹499), which may be revised at any time to the standard membership fee of indian rupees nine hundred and ninety-nine (₹999) or any other amount determined by yhn. the early bird pricing is a limited-period promotional offer and is subject to withdrawal at any time without prior notice.</p>
+      <p>payment of the registration fee must be completed via the payment method specified by yhn at the time of registration, which may include unified payments interface (upi), bank transfer, or other digital payment methods as notified. a screenshot or confirmation of payment must be submitted along with the registration form as proof of payment. membership is activated only after yhn verifies the payment and confirms registration. yhn is not responsible for failed, delayed, or duplicate payments arising from technical issues on the part of any payment platform or bank.</p>
+      <p>the registration fee is a one-time community membership fee and does not constitute a subscription, retainer, or advance for any specific service, deliverable, or guaranteed outcome. payment of the membership fee entitles the member to access the general community, receive communication about available opportunities, and attend events subject to capacity and availability, as more fully described in these terms. yhn reserves the right to introduce additional fee tiers, premium memberships, or paid add-ons at any time, and existing members shall not be automatically entitled to such additional offerings without separate payment.</p>
+    </div>
+  </div>
+
+  <!-- S5 -->
+  <div class="legal-section">
+    <span class="section-anchor" id="s5"></span>
+    <div class="section-header">
+      <div class="section-num">05</div>
+      <div class="section-title">NO REFUND <span>POLICY</span></div>
+    </div>
+    <div class="key-callout">
+      <p>ALL REGISTRATION FEES PAID TO YHN ARE STRICTLY NON-REFUNDABLE UNDER ANY CIRCUMSTANCES. This includes but is not limited to inability to attend events, dissatisfaction with services, relocation, personal emergencies, or any other reason whatsoever. By completing payment, you explicitly waive any right to a refund.</p>
+    </div>
+    <div class="legal-body">
+      <p>all registration fees paid to youth hustle network are non-refundable in all circumstances without any exception whatsoever. by completing payment of the membership fee, the member explicitly, voluntarily, and irrevocably waives all rights to claim a refund of such fee, whether under the consumer protection act, 2019, the indian contract act, 1872, or any other applicable law, regulation, or judicial precedent. this no-refund policy applies regardless of whether the member attends any event, receives any gig opportunity, secures any internship, or derives any measurable benefit from the membership.</p>
+      <p>the no-refund policy shall apply in all of the following non-exhaustive circumstances: (a) the member is unable to attend any or all events due to personal, professional, health, or geographic reasons; (b) the member is dissatisfied with the quality, frequency, or nature of events, workshops, gigs, or any other yhn offering; (c) yhn modifies, reduces, postpones, or cancels any event, workshop, or program due to any reason including force majeure, insufficient attendance, venue unavailability, or operational exigencies; (d) the member chooses to voluntarily withdraw from the yhn community; (e) yhn terminates the member's membership for breach of community guidelines or these terms; (f) the member is unable to access any platform, group, or communication channel due to technical or network issues; (g) any other reason, whether or not foreseeable at the time of registration.</p>
+      <p>notwithstanding the foregoing, in the sole and limited circumstance where yhn refuses an application for membership (as distinct from terminating an existing membership), yhn shall process a full refund of the registration fee paid to the applicant within a reasonable timeframe not exceeding thirty (30) days. this is the sole exception to the no-refund policy and does not apply in any other scenario.</p>
+      <p>members are strongly advised to carefully evaluate the yhn offering and satisfy themselves of its suitability prior to making payment. the act of payment shall be deemed conclusive evidence of the member's informed consent to this no-refund policy.</p>
+    </div>
+  </div>
+
+  <!-- S6 -->
+  <div class="legal-section">
+    <span class="section-anchor" id="s6"></span>
+    <div class="section-header">
+      <div class="section-num">06</div>
+      <div class="section-title">EVENTS &amp; <span>WORKSHOPS</span></div>
+    </div>
+    <div class="key-callout">
+      <p>All events, workshops, meetups, and sessions advertised by YHN — including frequency, format, location, and speaker details — are indicative only and subject to change, postponement, or cancellation at any time without liability to YHN.</p>
+    </div>
+    <div class="legal-body">
+      <p>yhn endeavours to organise community events, workshops, networking meetups, skill sessions, and related activities for its members in bangalore. references on the yhn website and communication channels to "bi-weekly events," "two events per month," "workshops twice a month," or any similar frequency-based representations are indicative of yhn's best-effort intent and do not constitute a contractual commitment to deliver a fixed number of events within any given time period. the actual number, frequency, format, timing, location, content, and duration of events may vary based on operational feasibility, speaker availability, venue availability, member attendance, weather, public safety concerns, regulatory requirements, and any other factors within or outside yhn's reasonable control.</p>
+      <p>attendance at events is subject to capacity constraints. yhn does not guarantee that all members will be able to attend every event, particularly in circumstances where event capacity is limited. yhn may prioritise attendance based on registration order, membership tier, or any other criterion determined at its discretion. members who are unable to attend a specific event due to capacity limitations shall have no claim for compensation, credit, or refund.</p>
+      <p>yhn reserves the right to modify the content, speakers, facilitators, format, or agenda of any event at any time, including on the day of the event, without prior notice. the inclusion of any speaker, mentor, or industry professional in yhn's communications does not guarantee their appearance at any specific event. yhn shall not be liable for any loss, inconvenience, or expense incurred by members arising from changes to or cancellation of events for any reason, including force majeure events such as natural disasters, government orders, pandemics, civic disruptions, or any other circumstances beyond yhn's reasonable control.</p>
+      <p>members attend all yhn events, workshops, and meetups entirely at their own risk. yhn does not accept any liability for personal injury, property damage, theft, loss, or any other harm suffered by members during or in connection with yhn events. members are solely responsible for their own safety, transportation, and conduct at all yhn events.</p>
+    </div>
+  </div>
+
+  <!-- S7 -->
+  <div class="legal-section">
+    <span class="section-anchor" id="s7"></span>
+    <div class="section-header">
+      <div class="section-num">07</div>
+      <div class="section-title">GIG <span>OPPORTUNITIES</span></div>
+    </div>
+    <div class="legal-body">
+      <p>yhn acts solely as a facilitator and intermediary in connecting members with brands, organisations, startups, agencies, and individuals ("gig partners") who may have gig-based work requirements. yhn does not guarantee the availability, volume, frequency, monetary value, or nature of gig opportunities communicated to its members at any point in time. the availability of gigs is entirely dependent on demand from external gig partners and is subject to fluctuation without prior notice or obligation on the part of yhn.</p>
+      <p>yhn charges a facilitation commission from gig partners on successful placement of members into gig assignments. the amount and structure of such commission is determined by yhn at its sole discretion and is not disclosed to members unless specifically required. members acknowledge that yhn's commission arrangements with gig partners do not in any way affect or diminish the remuneration payable to the member for the gig assignment as agreed between the member and the gig partner.</p>
+      <p>yhn does not act as an employer, staffing agency, or recruitment firm and does not guarantee employment, payment, or any specific outcome from gig placements. yhn is not a party to any agreement between a member and a gig partner and shall not be liable for any disputes, non-payment, breach of agreement, or any other issue arising between a member and a gig partner. members are advised to independently verify the credentials, bona fides, and payment terms of any gig partner before accepting an assignment. all disputes between members and gig partners must be resolved directly between the concerned parties, and yhn shall not be obligated to mediate, arbitrate, or intervene in any such dispute.</p>
+      <p>members who accept gig assignments through yhn agree to conduct themselves professionally and in a manner that reflects positively on the yhn community. any member whose conduct in a gig assignment is found by yhn to have caused reputational or financial harm to yhn or its partners may be removed from the community without refund.</p>
+    </div>
+  </div>
+
+  <!-- S8 -->
+  <div class="legal-section">
+    <span class="section-anchor" id="s8"></span>
+    <div class="section-header">
+      <div class="section-num">08</div>
+      <div class="section-title">INTERNSHIP <span>PLACEMENTS</span></div>
+    </div>
+    <div class="key-callout">
+      <p>YHN does not guarantee internship placements to any member. All references to internship access are indicative of YHN's intent to facilitate opportunities on a best-effort basis only. Securing an internship is entirely dependent on member merit and partner availability.</p>
+    </div>
+    <div class="legal-body">
+      <p>yhn may from time to time communicate internship opportunities available with its partner organisations, startups, brands, or other entities to its members. any representation made on the yhn website, social media, or communication channels regarding "internship access," "internship placements," "internship referrals," or similar expressions is strictly indicative of yhn's best-effort intent to facilitate introductions and does not constitute a guarantee, assurance, promise, or contractual commitment to secure an internship for any member.</p>
+      <p>the availability of internship opportunities communicated through yhn is entirely dependent on the requirements and discretion of partner organisations. yhn does not control, influence, or guarantee the hiring decisions of any partner organisation. a member's selection or rejection for an internship is entirely at the discretion of the partner organisation and yhn shall bear no responsibility or liability for such decisions. yhn does not guarantee that any internship communicated to members will be paid, full-time, part-time, remote, in-person, or of any specific duration, unless expressly stated in the opportunity communication.</p>
+      <p>members who receive internship referrals through yhn are solely responsible for their conduct, performance, and compliance with the terms and policies of the host organisation during the internship. yhn shall not be liable for any disputes, termination of internship, non-payment of stipend, or any other issue arising between a member and the host organisation. all such matters shall be resolved directly between the member and the host organisation without any obligation on yhn to intervene.</p>
+    </div>
+  </div>
+
+  <!-- S9 -->
+  <div class="legal-section">
+    <span class="section-anchor" id="s9"></span>
+    <div class="section-header">
+      <div class="section-num">09</div>
+      <div class="section-title">MEMBER <span>CONDUCT</span></div>
+    </div>
+    <div class="legal-body">
+      <p>all members of yhn are expected to conduct themselves with integrity, professionalism, and respect at all times within community spaces, events, group communications, and any interactions facilitated through yhn. members agree that they will not engage in any conduct that is abusive, discriminatory, harassing, threatening, defamatory, obscene, or otherwise harmful or offensive to any other member, yhn representative, gig partner, event attendee, or any third party. members agree not to use yhn's community platforms, groups, or events for the purpose of promoting competing community platforms, soliciting members for external ventures without yhn's prior written consent, spreading misinformation, or engaging in any unlawful activity.</p>
+      <p>members agree not to share, reproduce, distribute, or monetise any yhn content, member data, partner information, event recordings, or proprietary materials obtained through yhn membership without yhn's explicit written consent. members shall not share login credentials, registration confirmations, or access links with non-members for the purpose of enabling unauthorised access to yhn community spaces.</p>
+      <p>yhn reserves the right to remove any member from the community at any time, with or without prior notice, if yhn determines in its sole and absolute discretion that the member has violated these terms, the community guidelines, or has engaged in conduct that is detrimental to the yhn community, its partners, or its reputation. removal from the community does not entitle the member to any refund of the registration fee.</p>
+    </div>
+  </div>
+
+  <!-- S10 -->
+  <div class="legal-section">
+    <span class="section-anchor" id="s10"></span>
+    <div class="section-header">
+      <div class="section-num">10</div>
+      <div class="section-title">INTELLECTUAL <span>PROPERTY</span></div>
+    </div>
+    <div class="legal-body">
+      <p>all intellectual property associated with youth hustle network, including but not limited to the yhn name, logo, brand identity, taglines, website content, social media content, workshop materials, event content, presentation decks, graphics, photographs, videos, and all other creative and proprietary materials ("yhn ip") are the exclusive property of youth hustle network and its authorised creators. no member shall reproduce, modify, distribute, publicly display, commercially exploit, or create derivative works from any yhn ip without the prior explicit written consent of yhn.</p>
+      <p>by submitting any content, photographs, testimonials, or other materials to yhn through any channel, members grant yhn a perpetual, royalty-free, non-exclusive, irrevocable, worldwide licence to use, publish, reproduce, distribute, modify, and display such content for any purpose connected with yhn's operations, marketing, or community building, across any medium, without any obligation to seek further consent or provide compensation to the member. members represent and warrant that any content they submit to yhn does not infringe the intellectual property rights of any third party.</p>
+    </div>
+  </div>
+
+  <!-- S11 -->
+  <div class="legal-section">
+    <span class="section-anchor" id="s11"></span>
+    <div class="section-header">
+      <div class="section-num">11</div>
+      <div class="section-title">LIMITATION <span>OF LIABILITY</span></div>
+    </div>
+    <div class="legal-body">
+      <p>to the fullest extent permitted by applicable law, youth hustle network, its organisers, administrators, volunteers, partners, and representatives shall not be liable to any member or third party for any direct, indirect, incidental, special, consequential, punitive, or exemplary damages arising out of or in connection with membership in yhn, attendance at yhn events, participation in gig assignments, internship experiences, or use of any yhn platform or communication channel, whether or not yhn has been advised of the possibility of such damages and whether the claim is based in contract, tort, negligence, strict liability, or any other legal or equitable theory.</p>
+      <p>without limiting the foregoing, yhn specifically excludes liability for: (a) any failure to provide any minimum number of events, workshops, gigs, or internships; (b) any loss of income, earnings, or business opportunity arising from a gig or internship arrangement; (c) any personal injury, property damage, or loss suffered at or in connection with any yhn event; (d) any data breach, unauthorised access, or loss of personal data arising from technical vulnerabilities beyond yhn's reasonable control; (e) any harm arising from interactions between members within or outside yhn community platforms; (f) any reliance placed by a member on any representation made by yhn on its website, social media, or communication channels.</p>
+      <p>in all circumstances, yhn's aggregate liability to any member, if any, shall not exceed the amount of registration fee paid by that member to yhn. this limitation shall apply even if any limited remedy fails of its essential purpose.</p>
+    </div>
+  </div>
+
+  <!-- S12 -->
+  <div class="legal-section">
+    <span class="section-anchor" id="s12"></span>
+    <div class="section-header">
+      <div class="section-num">12</div>
+      <div class="section-title">PRIVACY <span>POLICY</span></div>
+    </div>
+    <div class="legal-body">
+      <p>youth hustle network is committed to protecting the privacy of its members and handling all personal data responsibly and in accordance with applicable indian law, including the information technology act, 2000, the information technology (reasonable security practices and procedures and sensitive personal data or information) rules, 2011 ("spdi rules"), and any other applicable data protection legislation in force from time to time. this privacy policy forms an integral part of these terms and conditions and must be read in conjunction with them. by registering with yhn, you provide your free, informed, specific, and unambiguous consent to the collection, storage, processing, and use of your personal data as described in this policy.</p>
+      <p>this privacy policy applies to all personal data collected through the yhn registration form, yhn website, yhn whatsapp community and groups, yhn social media accounts and direct messages, and any other medium through which yhn interacts with its members or prospective members. yhn may update this privacy policy at any time and the updated policy shall be communicated through the yhn website or community channels. continued participation in yhn following notification of updates shall constitute acceptance of the revised policy.</p>
+    </div>
+  </div>
+
+  <!-- S13 -->
+  <div class="legal-section">
+    <span class="section-anchor" id="s13"></span>
+    <div class="section-header">
+      <div class="section-num">13</div>
+      <div class="section-title">DATA COLLECTION <span>&amp; USE</span></div>
+    </div>
+    <div class="legal-body">
+      <p>yhn collects the following categories of personal data from members and prospective members: (a) identity data including full name, age, date of birth, and photograph where provided; (b) contact data including mobile number, email address, and residential city; (c) professional data including skills, experience level, areas of interest, availability, and career aspirations; (d) payment data including upi transaction reference numbers and payment screenshots, though yhn does not store full bank account or card details; (e) communication data including messages, inquiries, and responses submitted through the yhn website inquiry form, whatsapp, or any other channel; (f) usage data including participation in events, workshops, and gig assignments; and (g) any other information voluntarily provided by the member in the course of their participation in yhn activities.</p>
+      <p>yhn uses collected personal data for the following purposes: (a) verifying registration and processing membership; (b) communicating event details, gig opportunities, internship referrals, and community updates to members; (c) matching members with suitable gig partners based on skill profiles; (d) curating and improving yhn's community offerings; (e) administering and enforcing these terms and the community guidelines; (f) promoting yhn's community and showcasing member stories through social media and other channels, subject to member consent; (g) responding to member inquiries and grievances; (h) complying with any legal obligations applicable to yhn; and (i) any other purpose ancillary and incidental to the foregoing purposes.</p>
+      <p>yhn shall not sell, rent, or commercially transfer members' personal data to any third party for their independent marketing or commercial purposes. yhn may share member data with its gig partners and internship partners on a need-to-know basis for the purpose of facilitating placements and opportunities as described in these terms. members who do not wish their data to be shared with specific partners must notify yhn in writing prior to any placement. yhn may also disclose member data to law enforcement or regulatory authorities if required to do so by applicable law or pursuant to a lawful order or direction.</p>
+      <p>members consent to receiving communications from yhn through whatsapp, sms, email, and any other channel through which they have engaged with yhn, including communications of a promotional or marketing nature. members may opt out of promotional communications at any time by notifying yhn, provided that operational communications necessary for community participation shall continue regardless of opt-out.</p>
+    </div>
+  </div>
+
+  <!-- S14 -->
+  <div class="legal-section">
+    <span class="section-anchor" id="s14"></span>
+    <div class="section-header">
+      <div class="section-num">14</div>
+      <div class="section-title">DATA STORAGE <span>&amp; SECURITY</span></div>
+    </div>
+    <div class="legal-body">
+      <p>yhn stores member personal data using a combination of digital tools including but not limited to google forms, google sheets, google drive, whatsapp, and other cloud-based platforms operated by third-party service providers. member data may be stored on servers located within or outside the territory of india, including in jurisdictions that may have different data protection laws from india. by providing personal data to yhn, members consent to the transfer and storage of their data in such jurisdictions.</p>
+      <p>yhn implements reasonable security measures to protect member personal data against unauthorised access, disclosure, alteration, or destruction, in accordance with the spdi rules. however, yhn does not warrant that its security measures are infallible or that unauthorised access, disclosure, or data loss will never occur. members acknowledge that the transmission of data over the internet and through messaging platforms is inherently insecure and that yhn cannot guarantee the security of data transmitted to yhn through these means.</p>
+      <p>yhn retains member personal data for as long as the member remains part of the yhn community and for a reasonable period thereafter as required for legal, operational, or regulatory purposes. members may request deletion of their personal data by contacting yhn through the details specified in the contact section of these terms. yhn shall endeavour to fulfil such requests within a reasonable time, subject to any legal obligations requiring retention of certain data.</p>
+      <p>members have the right to access, correct, and update their personal data held by yhn by contacting yhn directly. members also have the right to withdraw consent to processing of their personal data at any time, provided that such withdrawal shall not affect the lawfulness of processing prior to the withdrawal and shall not entitle the member to any refund of registration fees.</p>
+    </div>
+  </div>
+
+  <!-- S15 -->
+  <div class="legal-section">
+    <span class="section-anchor" id="s15"></span>
+    <div class="section-header">
+      <div class="section-num">15</div>
+      <div class="section-title">THIRD-PARTY <span>PLATFORMS</span></div>
+    </div>
+    <div class="legal-body">
+      <p>yhn's community operations, communications, and registrations are facilitated through third-party platforms including but not limited to google (forms, sheets, drive), meta platforms (whatsapp, instagram), and other digital tools. the use of these platforms is subject to the respective terms of service and privacy policies of those platforms, which members agree to independently review and comply with. yhn is not responsible for the data handling practices, security standards, content policies, or operational decisions of any third-party platform.</p>
+      <p>the yhn website may contain links to external websites, social media profiles, or partner pages. yhn does not endorse, control, or accept responsibility for the content, privacy practices, or accuracy of any third-party website or resource linked from the yhn website. members access such third-party links entirely at their own risk.</p>
+      <p>the whatsapp groups and community maintained by yhn are operated on the whatsapp platform, which is governed by meta's terms of service. yhn administrators manage these groups and may add, remove, or moderate members at their discretion. yhn is not responsible for any content posted by members within yhn whatsapp groups, and members are solely responsible for ensuring their communications within these groups comply with applicable law and these terms.</p>
+    </div>
+  </div>
+
+  <!-- S16 -->
+  <div class="legal-section">
+    <span class="section-anchor" id="s16"></span>
+    <div class="section-header">
+      <div class="section-num">16</div>
+      <div class="section-title">TERMINATION</div>
+    </div>
+    <div class="legal-body">
+      <p>yhn reserves the right to terminate or suspend any member's participation in the yhn community, with or without prior notice, in the event of: (a) breach of any provision of these terms; (b) violation of the yhn community guidelines; (c) conduct that yhn determines, in its sole discretion, to be harmful, offensive, or detrimental to the yhn community, its partners, or its reputation; (d) provision of false or misleading information at the time of registration or at any point during membership; (e) misuse of any yhn platform, resource, or opportunity; or (f) any other reason that yhn deems sufficient in its sole and absolute discretion.</p>
+      <p>upon termination of membership, the member shall immediately cease to be entitled to attend any yhn events, access any yhn community platforms, receive gig or internship referrals, or benefit from any other yhn offering. termination of membership shall not entitle the member to any refund of the registration fee, as set out in the no-refund policy section of these terms. the following sections of these terms shall survive termination: intellectual property, limitation of liability, privacy policy, data storage and security, governing law, and disputes.</p>
+      <p>a member who wishes to voluntarily withdraw from the yhn community may do so by notifying yhn in writing through the official contact details specified in these terms. voluntary withdrawal shall not entitle the member to any refund of the registration fee.</p>
+    </div>
+  </div>
+
+  <!-- S17 -->
+  <div class="legal-section">
+    <span class="section-anchor" id="s17"></span>
+    <div class="section-header">
+      <div class="section-num">17</div>
+      <div class="section-title">AMENDMENTS</div>
+    </div>
+    <div class="legal-body">
+      <p>yhn reserves the right to amend, modify, revise, or replace these terms and conditions and privacy policy at any time, at its sole discretion, with or without prior notice to members. the updated terms shall be published on the yhn website and may be communicated to members through the yhn whatsapp community or other channels. the date of the most recent update shall be reflected in the "last updated" field on this page.</p>
+      <p>continued participation in yhn after the publication of updated terms shall constitute the member's acceptance of the revised terms. if a member does not agree to any updated terms, their sole remedy is to discontinue participation in yhn. no refund of any membership fee shall be provided on account of a member's disagreement with any amendment to these terms.</p>
+      <p>yhn may also from time to time publish supplementary guidelines, codes of conduct, or policies specific to particular events, workshops, or programs. such supplementary guidelines shall be read in conjunction with these terms and in the event of any conflict, the supplementary guidelines shall prevail with respect to the specific event or program to which they relate.</p>
+    </div>
+  </div>
+
+  <!-- S18 -->
+  <div class="legal-section">
+    <span class="section-anchor" id="s18"></span>
+    <div class="section-header">
+      <div class="section-num">18</div>
+      <div class="section-title">GOVERNING LAW <span>&amp; DISPUTES</span></div>
+    </div>
+    <div class="legal-body">
+      <p>these terms and conditions and privacy policy shall be governed by and construed in accordance with the laws of the republic of india, without regard to its conflict of law provisions. any dispute, claim, controversy, or difference arising out of or in connection with these terms, the breach, termination, or validity thereof, or the member's participation in yhn, shall be subject to the exclusive jurisdiction of the courts of competent jurisdiction located in bangalore, karnataka, india. by registering with yhn, each member irrevocably submits to the personal jurisdiction of such courts and waives any objection to the laying of venue of any such proceeding in bangalore, karnataka.</p>
+      <p>prior to initiating any formal legal proceedings, members agree to attempt to resolve any dispute with yhn through good faith negotiations by contacting yhn through the official contact details provided herein. both parties agree to engage in such negotiations for a period of not less than thirty (30) days from the date of written notification of the dispute before commencing any formal legal action.</p>
+      <p>in the event that any provision of these terms is found by a court of competent jurisdiction to be invalid, illegal, or unenforceable, such provision shall be modified to the minimum extent necessary to make it enforceable, and the remaining provisions of these terms shall continue in full force and effect. the invalidity of one provision shall not affect the validity of the remaining provisions.</p>
+    </div>
+  </div>
+
+  <!-- S19 -->
+  <div class="legal-section">
+    <span class="section-anchor" id="s19"></span>
+    <div class="section-header">
+      <div class="section-num">19</div>
+      <div class="section-title">CONTACT <span>INFORMATION</span></div>
+    </div>
+    <div class="legal-body">
+      <p>for any queries, grievances, data access requests, or communications relating to these terms and conditions or privacy policy, members may contact youth hustle network through the following details:</p>
+      <p><strong>operating name:</strong> youth hustle network (yhn)<br/>
+      <strong>location:</strong> bangalore, karnataka, india<br/>
+      <strong>whatsapp / phone:</strong> +91 97889 96664<br/>
+      <strong>instagram:</strong> @youthhustlenetwork<br/>
+      <strong>contact hours:</strong> monday to saturday, 10:00 am to 6:00 pm ist</p>
+      <p>yhn shall endeavour to respond to all queries and grievances within seven (7) working days of receipt. members are advised to clearly state the nature of their query and provide their registered contact details when reaching out to yhn for efficient resolution.</p>
+      <p>for grievances relating to data privacy or personal data handling, members may contact yhn through the above details and yhn shall endeavour to address such grievances within a reasonable timeframe in accordance with applicable law.</p>
+      <p>these terms and conditions and privacy policy were last reviewed and updated on 1st january 2025 and are effective from that date. youth hustle network reserves all rights not expressly granted herein.</p>
+    </div>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-inner">
+    <div>
+      <div class="footer-logo">Y<span>H</span>N</div>
+      <div style="font-size:0.72rem;color:#333;margin-top:4px;font-family:'DM Sans',sans-serif;">Youth Hustle Network · Bangalore, India</div>
+    </div>
+    <div class="footer-copy">© 2025 Youth Hustle Network. All rights reserved. · <a href="yhn-website.html" style="color:#555;text-decoration:none;">Back to Website</a></div>
+  </div>
+</footer>
+
+</body>
+</html>
