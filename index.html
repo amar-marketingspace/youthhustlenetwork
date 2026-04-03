@@ -283,7 +283,21 @@
   @keyframes scrollX { from { transform:translateX(0); } to { transform:translateX(-50%); } }
   .reveal { opacity:0; transform:translateY(28px); transition: opacity 0.7s ease, transform 0.7s ease; }
   .reveal.visible { opacity:1; transform:translateY(0); }
+
+  [data-lucide] {
+  width: 24px;
+  height: 24px;
+  stroke: var(--orange);
+  stroke-width: 1.5;
+  fill: none;
+  vertical-align: middle;
+}
+  .benefit-icon [data-lucide] {
+  width: 32px;
+  height: 32px;
+}
 </style>
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
 </head>
 <body>
 
@@ -426,32 +440,32 @@
   <h2 class="section-title reveal">WHAT YOU <span class="acc">GET</span></h2>
   <div class="benefits-grid">
     <div class="benefit-card reveal">
-      <span class="benefit-icon">🎯</span>
+      <span class="benefit-icon"><i data-lucide="target"></i></span>
       <div class="benefit-title">Real Gig Opportunities</div>
       <p class="benefit-desc">Get matched with brands and startups for paid work — events, content, photography, promotions, marketing. Your skill earns real money.</p>
     </div>
     <div class="benefit-card featured reveal">
-      <span class="benefit-icon">⚡</span>
+      <span class="benefit-icon"><i data-lucide="zap"></i></span>
       <div class="benefit-title">Offline Events Twice a Month</div>
       <p class="benefit-desc">Two exclusive events monthly — hustle meetups, networking mixers, skill swaps — only for YHN members, in your city, with people who are doing the work.</p>
     </div>
     <div class="benefit-card reveal">
-      <span class="benefit-icon">💼</span>
+      <span class="benefit-icon"><i data-lucide="briefcase"></i></span>
       <div class="benefit-title">Internship Placements</div>
       <p class="benefit-desc">Direct access to internships at Bangalore startups and D2C brands. We make the introduction. You take it from there.</p>
     </div>
     <div class="benefit-card reveal">
-      <span class="benefit-icon">🛠️</span>
+      <span class="benefit-icon"><i data-lucide="wrench"></i></span>
       <div class="benefit-title">Hands-On Workshops</div>
       <p class="benefit-desc">Bi-weekly sessions on freelancing, AI tools, content creation, marketing, startup fundamentals. Practical. Actionable. Real.</p>
     </div>
     <div class="benefit-card reveal">
-      <span class="benefit-icon">🤝</span>
+      <span class="benefit-icon"><i data-lucide="handshake"></i></span>
       <div class="benefit-title">Collaborator Network</div>
       <p class="benefit-desc">Find your co-founder, creative partner, or collab buddy. The YHN member base is skill-tagged and curated for easy discovery.</p>
     </div>
     <div class="benefit-card reveal">
-      <span class="benefit-icon">📣</span>
+      <span class="benefit-icon"><i data-lucide="megaphone"></i></span>
       <div class="benefit-title">Community Spotlight</div>
       <p class="benefit-desc">Get featured on YHN's social channels as a member hustler. Your work, your story — amplified to our growing Bangalore audience.</p>
     </div>
@@ -465,25 +479,25 @@
   <div class="steps">
     <div class="step reveal">
       <div class="step-num">01</div>
-      <div class="step-icon">💳</div>
+      <div class="step-icon"><i data-lucide="credit-card"></i></div>
       <div class="step-title">Pay ₹999 Early Bird</div>
       <p class="step-desc">One-time founding member fee. Pay via UPI and register through the Google Form. Upload your payment screenshot to confirm.</p>
     </div>
     <div class="step reveal">
       <div class="step-num">02</div>
-      <div class="step-icon">📝</div>
+      <div class="step-icon"><i data-lucide="file-text"></i></div>
       <div class="step-title">Fill Registration Form</div>
       <p class="step-desc">Share your skills, availability, and what you're looking for. This helps us match you to the right gigs and collaborators instantly.</p>
     </div>
     <div class="step reveal">
       <div class="step-num">03</div>
-      <div class="step-icon">✅</div>
+      <div class="step-icon"><i data-lucide="check-circle"></i></div>
       <div class="step-title">Get Approved & Onboarded</div>
       <p class="step-desc">We verify your payment and add you to the private YHN community within 24 hours. Welcome kit and next event details — ready to go.</p>
     </div>
     <div class="step reveal">
       <div class="step-num">04</div>
-      <div class="step-icon">🚀</div>
+      <div class="step-icon"><i data-lucide="rocket"></i></div>
       <div class="step-title">Access Opportunities</div>
       <p class="step-desc">Gigs, events, workshops, internships. Your first opportunity could arrive within the first week of joining.</p>
     </div>
@@ -549,9 +563,9 @@
       <h3>WE'LL GET BACK<br>TO YOU ON<br><span style="color:var(--orange)">WHATSAPP.</span></h3>
       <p>Fill in your details and your message goes directly to us on WhatsApp. We respond fast — usually within a few hours.</p>
       <div class="contact-info">
-        <div class="contact-row"><span class="contact-icon">📍</span>Bangalore, Karnataka, India</div>
-        <div class="contact-row"><span class="contact-icon">📱</span>+91 97889 66664</div>
-        <div class="contact-row"><span class="contact-icon">📸</span>@youthhustlenetwork</div>
+        <div class="contact-row"><span class="contact-icon"><i data-lucide="map-pin"></i></span>Bangalore, Karnataka, India</div>
+        <div class="contact-row"><span class="contact-icon"><i data-lucide="smartphone"></i></span>+91 97889 66664</div>
+        <div class="contact-row"><span class="contact-icon"><i data-lucide="instagram"></i></span>@youthhustlenetwork</div>
       </div>
       <div style="margin-top:36px;">
         <a href="https://forms.gle/P4Nm232AqFEz956g9" target="_blank" class="btn-primary">Already Decided? Register →</a>
@@ -657,5 +671,6 @@
     window.open(`https://wa.me/919788966664?text=${encodeURIComponent(msg)}`, '_blank');
   });
 </script>
+  <script>lucide.createIcons();</script>
 </body>
 </html>
