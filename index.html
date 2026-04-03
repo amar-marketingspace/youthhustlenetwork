@@ -297,7 +297,6 @@
   height: 32px;
 }
 </style>
-  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
 </head>
 <body>
 
@@ -445,9 +444,9 @@
       <p class="benefit-desc">Get matched with brands and startups for paid work — events, content, photography, promotions, marketing. Your skill earns real money.</p>
     </div>
     <div class="benefit-card featured reveal">
-      <span class="benefit-icon"><i data-lucide="zap"></i></span>
+      <span class="benefit-icon">⚡</i></span>
       <div class="benefit-title">Offline Events 4 times a Month</div>
-      <p class="benefit-desc">Two exclusive events monthly — hustle meetups, networking mixers, skill swaps — only for YHN members, in your city, with people who are doing the work.</p>
+      <p class="benefit-desc">Four exclusive events monthly — hustle meetups, networking mixers, skill swaps — only for YHN members, in your city, with people who are doing the work.</p>
     </div>
     <div class="benefit-card reveal">
       <span class="benefit-icon"><i data-lucide="briefcase"></i></span>
@@ -671,6 +670,11 @@
     window.open(`https://wa.me/918317466232?text=${encodeURIComponent(msg)}`, '_blank');
   });
 </script>
-  <script>lucide.createIcons();</script>
+  <script src="https://unpkg.com/lucide@0.383.0/dist/umd/lucide.min.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    lucide.createIcons();
+  });
+</script>
 </body>
 </html>
