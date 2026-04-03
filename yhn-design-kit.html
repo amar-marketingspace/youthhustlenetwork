@@ -1,0 +1,564 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>YHN Brand Design Kit</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+<style>
+  :root {
+    --black: #0A0A0A;
+    --dark: #111111;
+    --card: #161616;
+    --orange: #FF5C00;
+    --orange-light: #FF7A2A;
+    --orange-pale: #FF8F55;
+    --yellow: #FFD000;
+    --yellow-deep: #E6BB00;
+    --white: #F5F5F0;
+    --off: #CCCCCC;
+    --muted: #888888;
+    --subtle: #444444;
+    --border: rgba(255,92,0,0.18);
+  }
+  * { margin:0; padding:0; box-sizing:border-box; }
+  body { background:#0A0A0A; color:#F5F5F0; font-family:'DM Sans',sans-serif; padding:60px 48px; max-width:1100px; margin:0 auto; }
+
+  /* HEADER */
+  .kit-header { margin-bottom:80px; border-bottom:1px solid rgba(255,92,0,0.2); padding-bottom:48px; }
+  .kit-logo { font-family:'Bebas Neue',sans-serif; font-size:3.5rem; letter-spacing:6px; color:#FF5C00; }
+  .kit-logo span { color:#FFD000; }
+  .kit-subtitle { font-family:'Syne',sans-serif; font-size:0.78rem; font-weight:700; letter-spacing:3px; text-transform:uppercase; color:#888; margin-top:8px; }
+
+  /* SECTION LABEL */
+  .section-label {
+    font-family:'Syne',sans-serif; font-size:0.7rem; font-weight:700;
+    letter-spacing:3px; text-transform:uppercase; color:#FF5C00;
+    margin-bottom:28px; padding-bottom:10px; border-bottom:1px solid rgba(255,92,0,0.15);
+  }
+  .kit-section { margin-bottom:80px; }
+
+  /* COLORS */
+  .color-row { display:flex; gap:12px; flex-wrap:wrap; }
+  .swatch-group { display:flex; flex-direction:column; gap:0; min-width:100px; }
+  .swatch { width:100px; height:80px; }
+  .swatch.tall { height:120px; }
+  .swatch-name { font-family:'Syne',sans-serif; font-size:0.68rem; font-weight:700; letter-spacing:1px; color:#888; margin-top:8px; text-transform:uppercase; }
+  .swatch-hex { font-family:'DM Sans',sans-serif; font-size:0.75rem; color:#555; margin-top:2px; }
+  .swatch-label { font-family:'Syne',sans-serif; font-size:0.62rem; letter-spacing:1px; text-transform:uppercase; color:#444; margin-top:4px; }
+
+  /* TYPOGRAPHY */
+  .type-row { margin-bottom:36px; border-bottom:1px solid #1a1a1a; padding-bottom:36px; }
+  .type-row:last-child { border-bottom:none; }
+  .type-meta { font-family:'DM Sans',sans-serif; font-size:0.78rem; color:#555; margin-bottom:12px; }
+
+  /* LOGO VARIANTS */
+  .logo-grid { display:grid; grid-template-columns:1fr 1fr 1fr; gap:16px; }
+  @media(max-width:680px){ .logo-grid{ grid-template-columns:1fr 1fr; } }
+  .logo-box {
+    display:flex; align-items:center; justify-content:center;
+    height:120px; border:1px solid #1e1e1e;
+  }
+  .logo-box.on-white { background:#F5F5F0; }
+  .logo-box.on-orange { background:#FF5C00; }
+  .logo-box.on-yellow { background:#FFD000; }
+  .logo-text { font-family:'Bebas Neue',sans-serif; letter-spacing:4px; }
+  .logo-cap { font-family:'Syne',sans-serif; font-weight:700; font-size:0.65rem; letter-spacing:3px; text-transform:uppercase; text-align:center; margin-top:6px; color:#555; }
+
+  /* BUTTONS */
+  .btn-row { display:flex; gap:16px; flex-wrap:wrap; align-items:center; }
+  .btn { font-family:'Syne',sans-serif; font-weight:700; font-size:0.88rem; letter-spacing:1px; padding:14px 32px; border:none; cursor:default; clip-path: polygon(7px 0%, 100% 0%, calc(100% - 7px) 100%, 0% 100%); }
+  .btn-primary-ex { background:#FF5C00; color:#fff; }
+  .btn-outline-ex { background:transparent; color:#F5F5F0; border:1px solid rgba(255,255,255,0.2); }
+  .btn-yellow-ex { background:#FFD000; color:#0A0A0A; }
+  .btn-ghost-ex { background:transparent; color:#FF5C00; border:1px solid rgba(255,92,0,0.4); }
+
+  /* TAGS / BADGES */
+  .tag-row { display:flex; gap:10px; flex-wrap:wrap; align-items:center; margin-bottom:16px; }
+  .tag { font-family:'Syne',sans-serif; font-weight:700; font-size:0.7rem; letter-spacing:2px; text-transform:uppercase; padding:5px 14px; }
+  .tag-orange-outline { border:1px solid #FF5C00; color:#FF5C00; }
+  .tag-orange-fill { background:#FF5C00; color:#fff; }
+  .tag-yellow-fill { background:#FFD000; color:#0A0A0A; }
+  .tag-dark { background:#161616; color:#888; border:1px solid #1f1f1f; }
+  .tag-white-outline { border:1px solid rgba(255,255,255,0.15); color:#ccc; }
+
+  /* CARDS */
+  .card-row { display:grid; grid-template-columns:repeat(auto-fit,minmax(220px,1fr)); gap:16px; }
+  .kit-card { background:#161616; border:1px solid rgba(255,92,0,0.12); padding:28px 24px; }
+  .kit-card.featured { background:#FF5C00; border-color:#FF5C00; }
+  .kit-card .card-icon { font-size:1.6rem; margin-bottom:16px; }
+  .kit-card .card-title { font-family:'Syne',sans-serif; font-weight:800; font-size:0.97rem; margin-bottom:8px; }
+  .kit-card .card-body { font-size:0.84rem; color:#888; line-height:1.65; }
+  .kit-card.featured .card-body { color:rgba(255,255,255,0.8); }
+
+  /* SPACING */
+  .spacing-row { display:flex; gap:24px; align-items:flex-end; flex-wrap:wrap; }
+  .sp-item { display:flex; flex-direction:column; align-items:center; gap:8px; }
+  .sp-block { background:rgba(255,92,0,0.15); border:1px dashed rgba(255,92,0,0.4); width:40px; }
+  .sp-label { font-family:'Syne',sans-serif; font-size:0.65rem; font-weight:700; color:#555; letter-spacing:1px; text-transform:uppercase; }
+  .sp-val { font-family:'DM Sans',sans-serif; font-size:0.78rem; color:#FF5C00; }
+
+  /* DIVIDER */
+  .divider { width:100%; height:1px; background:rgba(255,92,0,0.12); margin:80px 0; }
+
+  /* ICON USAGE */
+  .icon-grid { display:flex; gap:24px; flex-wrap:wrap; }
+  .icon-item { display:flex; flex-direction:column; align-items:center; gap:8px; }
+  .icon-box { width:52px; height:52px; display:flex; align-items:center; justify-content:center; font-size:1.5rem; background:#161616; border:1px solid #1e1e1e; }
+  .icon-label { font-size:0.68rem; color:#555; font-family:'Syne',sans-serif; letter-spacing:1px; text-transform:uppercase; }
+
+  /* MARQUEE SAMPLE */
+  .marquee-sample { background:#FF5C00; padding:16px 24px; overflow:hidden; position:relative; }
+  .marquee-inner { font-family:'Bebas Neue',sans-serif; font-size:1.3rem; letter-spacing:3px; color:#fff; white-space:nowrap; }
+
+  /* CLIP PATH SAMPLE */
+  .clip-row { display:flex; gap:16px; flex-wrap:wrap; align-items:center; }
+  .clip-box { padding:14px 28px; font-family:'Syne',sans-serif; font-size:0.85rem; font-weight:700; letter-spacing:1px; }
+  .clip-angled { clip-path: polygon(7px 0%, 100% 0%, calc(100% - 7px) 100%, 0% 100%); background:#FF5C00; color:#fff; }
+  .clip-square { background:#161616; border:1px solid #1e1e1e; color:#ccc; }
+
+  /* GRID LINES */
+  .grid-sample { background:rgba(255,92,0,0.04); border:1px solid rgba(255,92,0,0.12); padding:40px; position:relative; overflow:hidden; }
+  .grid-lines-inner {
+    position:absolute; inset:0;
+    background-image: linear-gradient(rgba(255,92,0,0.06) 1px, transparent 1px),
+                      linear-gradient(90deg, rgba(255,92,0,0.06) 1px, transparent 1px);
+    background-size:40px 40px;
+  }
+  .grid-label { position:relative; z-index:1; font-family:'Bebas Neue',sans-serif; font-size:2.5rem; color:#FF5C00; }
+
+  /* USAGE RULES */
+  .rules-grid { display:grid; grid-template-columns:1fr 1fr; gap:2px; }
+  @media(max-width:600px){ .rules-grid{ grid-template-columns:1fr; } }
+  .rule-box { background:#111; padding:24px 20px; }
+  .rule-box.do { border-top:3px solid #FF5C00; }
+  .rule-box.dont { border-top:3px solid #444; }
+  .rule-head { font-family:'Syne',sans-serif; font-weight:800; font-size:0.72rem; letter-spacing:2px; text-transform:uppercase; margin-bottom:12px; }
+  .rule-head.do-head { color:#FF5C00; }
+  .rule-head.dont-head { color:#555; }
+  .rule-list { list-style:none; display:flex; flex-direction:column; gap:8px; }
+  .rule-list li { font-size:0.85rem; color:#888; line-height:1.5; padding-left:16px; position:relative; }
+  .rule-list li::before { content:''; position:absolute; left:0; top:9px; width:6px; height:1px; background:#555; }
+  .rule-box.do .rule-list li::before { background:#FF5C00; }
+
+  /* FOOTER */
+  .kit-footer { margin-top:80px; padding-top:32px; border-top:1px solid rgba(255,92,0,0.12); display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px; }
+  .kit-footer-logo { font-family:'Bebas Neue',sans-serif; font-size:1.5rem; letter-spacing:4px; color:#FF5C00; }
+  .kit-footer-logo span { color:#FFD000; }
+  .kit-footer-copy { font-size:0.78rem; color:#333; font-family:'DM Sans',sans-serif; }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="kit-header">
+  <div class="kit-logo">Y<span>H</span>N</div>
+  <div class="kit-subtitle">Brand Design Kit — v1.0 · Bangalore, India</div>
+</div>
+
+<!-- COLORS -->
+<div class="kit-section">
+  <div class="section-label">01 — Color Palette</div>
+  <div class="color-row">
+
+    <div class="swatch-group">
+      <div class="swatch tall" style="background:#FF5C00;"></div>
+      <div class="swatch-name">YHN Orange</div>
+      <div class="swatch-hex">#FF5C00</div>
+      <div class="swatch-label">Primary Brand</div>
+    </div>
+
+    <div class="swatch-group">
+      <div class="swatch tall" style="background:#FF7A2A;"></div>
+      <div class="swatch-name">Orange Hover</div>
+      <div class="swatch-hex">#FF7A2A</div>
+      <div class="swatch-label">Hover / Active</div>
+    </div>
+
+    <div class="swatch-group">
+      <div class="swatch tall" style="background:#FF8F55;"></div>
+      <div class="swatch-name">Orange Pale</div>
+      <div class="swatch-hex">#FF8F55</div>
+      <div class="swatch-label">Tints / Accents</div>
+    </div>
+
+    <div class="swatch-group">
+      <div class="swatch tall" style="background:#FFD000;"></div>
+      <div class="swatch-name">YHN Yellow</div>
+      <div class="swatch-hex">#FFD000</div>
+      <div class="swatch-label">Secondary Accent</div>
+    </div>
+
+    <div class="swatch-group">
+      <div class="swatch tall" style="background:#E6BB00;"></div>
+      <div class="swatch-name">Yellow Deep</div>
+      <div class="swatch-hex">#E6BB00</div>
+      <div class="swatch-label">Badges / Tags</div>
+    </div>
+
+    <div class="swatch-group">
+      <div class="swatch tall" style="background:#F5F5F0;"></div>
+      <div class="swatch-name">Off White</div>
+      <div class="swatch-hex">#F5F5F0</div>
+      <div class="swatch-label">Primary Text</div>
+    </div>
+
+    <div class="swatch-group">
+      <div class="swatch tall" style="background:#888888;"></div>
+      <div class="swatch-name">Muted Grey</div>
+      <div class="swatch-hex">#888888</div>
+      <div class="swatch-label">Body / Subtext</div>
+    </div>
+
+    <div class="swatch-group">
+      <div class="swatch tall" style="background:#161616;"></div>
+      <div class="swatch-name">Card Black</div>
+      <div class="swatch-hex">#161616</div>
+      <div class="swatch-label">Cards / Surfaces</div>
+    </div>
+
+    <div class="swatch-group">
+      <div class="swatch tall" style="background:#111111;"></div>
+      <div class="swatch-name">Dark BG</div>
+      <div class="swatch-hex">#111111</div>
+      <div class="swatch-label">Section BG</div>
+    </div>
+
+    <div class="swatch-group">
+      <div class="swatch tall" style="background:#0A0A0A;"></div>
+      <div class="swatch-name">True Black</div>
+      <div class="swatch-hex">#0A0A0A</div>
+      <div class="swatch-label">Page Background</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- TYPOGRAPHY -->
+<div class="kit-section">
+  <div class="section-label">02 — Typography</div>
+
+  <div class="type-row">
+    <div class="type-meta">Bebas Neue · Display / Headings · All caps</div>
+    <div style="font-family:'Bebas Neue',sans-serif; font-size:5rem; line-height:0.95; color:#F5F5F0; letter-spacing:2px;">WHERE HUSTLERS<br>MEET <span style="color:#FF5C00;">OPPORTUNITIES</span></div>
+  </div>
+
+  <div class="type-row">
+    <div class="type-meta">Bebas Neue · Section Title · clamp(2.5rem → 5rem)</div>
+    <div style="font-family:'Bebas Neue',sans-serif; font-size:3.5rem; line-height:0.98; letter-spacing:1px;">JOIN IN <span style="color:#FF5C00;">4 STEPS</span></div>
+  </div>
+
+  <div class="type-row">
+    <div class="type-meta">Syne Bold 700–800 · Labels / Tags / CTAs</div>
+    <div style="display:flex; flex-direction:column; gap:10px;">
+      <div style="font-family:'Syne',sans-serif; font-weight:800; font-size:1.2rem; letter-spacing:0.5px;">Member Benefits</div>
+      <div style="font-family:'Syne',sans-serif; font-weight:700; font-size:0.78rem; letter-spacing:3px; text-transform:uppercase; color:#FF5C00;">01 — Section Tag</div>
+      <div style="font-family:'Syne',sans-serif; font-weight:700; font-size:0.88rem; letter-spacing:1px;">Register Now — ₹499 Early Bird</div>
+    </div>
+  </div>
+
+  <div class="type-row">
+    <div class="type-meta">DM Sans 400 · Body Text · 0.9–1.1rem · line-height 1.7–1.8</div>
+    <div style="font-family:'DM Sans',sans-serif; font-size:1rem; line-height:1.78; color:#888; max-width:560px;">Youth Hustle Network is Bangalore's private community for ambitious young people — access real gigs, internships, workshops, and offline events with like-minded hustlers who are building something real.</div>
+  </div>
+
+  <div class="type-row" style="border:none;">
+    <div class="type-meta">Type Scale Reference</div>
+    <table style="border-collapse:collapse; width:100%; font-size:0.85rem;">
+      <tr style="border-bottom:1px solid #1a1a1a;">
+        <td style="padding:10px 16px 10px 0; color:#555; font-family:'Syne',sans-serif; font-size:0.7rem; letter-spacing:1px; text-transform:uppercase;">Role</td>
+        <td style="padding:10px 16px 10px 0; color:#555; font-family:'Syne',sans-serif; font-size:0.7rem; letter-spacing:1px; text-transform:uppercase;">Font</td>
+        <td style="padding:10px 16px 10px 0; color:#555; font-family:'Syne',sans-serif; font-size:0.7rem; letter-spacing:1px; text-transform:uppercase;">Size</td>
+        <td style="padding:10px 16px 10px 0; color:#555; font-family:'Syne',sans-serif; font-size:0.7rem; letter-spacing:1px; text-transform:uppercase;">Weight</td>
+      </tr>
+      <tr style="border-bottom:1px solid #141414;">
+        <td style="padding:10px 16px 10px 0; color:#ccc;">Hero Headline</td>
+        <td style="padding:10px 16px 10px 0; color:#888;">Bebas Neue</td>
+        <td style="padding:10px 16px 10px 0; color:#888;">clamp(3.8rem, 11vw, 9.5rem)</td>
+        <td style="padding:10px 16px 10px 0; color:#888;">400 (normal)</td>
+      </tr>
+      <tr style="border-bottom:1px solid #141414;">
+        <td style="padding:10px 16px 10px 0; color:#ccc;">Section Title</td>
+        <td style="padding:10px 16px 10px 0; color:#888;">Bebas Neue</td>
+        <td style="padding:10px 16px 10px 0; color:#888;">clamp(2.6rem, 6vw, 5.2rem)</td>
+        <td style="padding:10px 16px 10px 0; color:#888;">400 (normal)</td>
+      </tr>
+      <tr style="border-bottom:1px solid #141414;">
+        <td style="padding:10px 16px 10px 0; color:#ccc;">Card Title</td>
+        <td style="padding:10px 16px 10px 0; color:#888;">Syne</td>
+        <td style="padding:10px 16px 10px 0; color:#888;">1.05–1.15rem</td>
+        <td style="padding:10px 16px 10px 0; color:#888;">800</td>
+      </tr>
+      <tr style="border-bottom:1px solid #141414;">
+        <td style="padding:10px 16px 10px 0; color:#ccc;">Section Tag</td>
+        <td style="padding:10px 16px 10px 0; color:#888;">Syne</td>
+        <td style="padding:10px 16px 10px 0; color:#888;">0.73rem</td>
+        <td style="padding:10px 16px 10px 0; color:#888;">700 · 3px letter-spacing · UPPERCASE</td>
+      </tr>
+      <tr style="border-bottom:1px solid #141414;">
+        <td style="padding:10px 16px 10px 0; color:#ccc;">CTA Button</td>
+        <td style="padding:10px 16px 10px 0; color:#888;">Syne</td>
+        <td style="padding:10px 16px 10px 0; color:#888;">0.88–0.97rem</td>
+        <td style="padding:10px 16px 10px 0; color:#888;">700 · 1px letter-spacing</td>
+      </tr>
+      <tr style="border-bottom:1px solid #141414;">
+        <td style="padding:10px 16px 10px 0; color:#ccc;">Body Text</td>
+        <td style="padding:10px 16px 10px 0; color:#888;">DM Sans</td>
+        <td style="padding:10px 16px 10px 0; color:#888;">0.9–1rem</td>
+        <td style="padding:10px 16px 10px 0; color:#888;">400 · line-height 1.7</td>
+      </tr>
+      <tr>
+        <td style="padding:10px 16px 10px 0; color:#ccc;">Label / Caption</td>
+        <td style="padding:10px 16px 10px 0; color:#888;">DM Sans</td>
+        <td style="padding:10px 16px 10px 0; color:#888;">0.75–0.82rem</td>
+        <td style="padding:10px 16px 10px 0; color:#888;">400 · color:#888</td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+<!-- LOGO -->
+<div class="kit-section">
+  <div class="section-label">03 — Logo Variants</div>
+  <div class="logo-grid">
+    <div>
+      <div class="logo-box" style="background:#0A0A0A; border-color:#1a1a1a;">
+        <div>
+          <div class="logo-text" style="font-size:3rem; color:#FF5C00; letter-spacing:6px;">Y<span style="color:#FFD000;">H</span>N</div>
+        </div>
+      </div>
+      <div class="logo-cap">Primary — On Black</div>
+    </div>
+    <div>
+      <div class="logo-box on-white">
+        <div class="logo-text" style="font-size:3rem; color:#FF5C00; letter-spacing:6px;">Y<span style="color:#0A0A0A;">H</span>N</div>
+      </div>
+      <div class="logo-cap">Reversed — On White</div>
+    </div>
+    <div>
+      <div class="logo-box on-orange">
+        <div class="logo-text" style="font-size:3rem; color:#fff; letter-spacing:6px;">Y<span style="color:#FFD000;">H</span>N</div>
+      </div>
+      <div class="logo-cap">White — On Orange</div>
+    </div>
+    <div>
+      <div class="logo-box" style="background:#0A0A0A; border-color:#1a1a1a;">
+        <div>
+          <div class="logo-text" style="font-size:2rem; color:#FF5C00; letter-spacing:5px;">YHN</div>
+          <div style="font-family:'Syne',sans-serif; font-size:0.52rem; font-weight:700; letter-spacing:3px; color:#888; text-align:center; text-transform:uppercase; margin-top:4px;">Youth Hustle Network</div>
+        </div>
+      </div>
+      <div class="logo-cap">With Wordmark</div>
+    </div>
+    <div>
+      <div class="logo-box on-yellow">
+        <div class="logo-text" style="font-size:3rem; color:#0A0A0A; letter-spacing:6px;">YHN</div>
+      </div>
+      <div class="logo-cap">Black — On Yellow</div>
+    </div>
+    <div>
+      <div class="logo-box" style="background:#0A0A0A; border:1px solid rgba(255,92,0,0.3);">
+        <div class="logo-text" style="font-size:3rem; color:#888; letter-spacing:6px;">YHN</div>
+      </div>
+      <div class="logo-cap">Monochrome</div>
+    </div>
+  </div>
+</div>
+
+<!-- BUTTONS -->
+<div class="kit-section">
+  <div class="section-label">04 — Buttons & CTAs</div>
+  <div class="btn-row" style="margin-bottom:20px;">
+    <div class="btn btn-primary-ex">Register Now — ₹499</div>
+    <div class="btn btn-outline-ex">Learn More</div>
+    <div class="btn btn-yellow-ex">Early Bird Offer</div>
+    <div class="btn btn-ghost-ex">Ask a Question</div>
+  </div>
+  <div style="margin-top:20px;">
+    <div style="font-family:'Syne',sans-serif; font-size:0.7rem; font-weight:700; letter-spacing:2px; color:#444; text-transform:uppercase; margin-bottom:14px;">Clip-path Angled Style (Used on all buttons)</div>
+    <div class="clip-row">
+      <div class="clip-box clip-angled">CTA Button Shape</div>
+      <div style="font-family:'DM Sans',sans-serif; font-size:0.82rem; color:#555; max-width:300px; line-height:1.6;">
+        All YHN buttons use angled clip-path:<br>
+        <code style="font-size:0.75rem; color:#FF5C00; background:#161616; padding:2px 6px;">polygon(7px 0%, 100% 0%, calc(100% - 7px) 100%, 0% 100%)</code>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- TAGS & BADGES -->
+<div class="kit-section">
+  <div class="section-label">05 — Tags, Badges & Labels</div>
+  <div class="tag-row">
+    <div class="tag tag-orange-outline">Section Tag</div>
+    <div class="tag tag-orange-fill">Orange Filled</div>
+    <div class="tag tag-yellow-fill">🔥 Early Bird</div>
+    <div class="tag tag-dark">Member Skill</div>
+    <div class="tag tag-white-outline">Who Joins</div>
+  </div>
+  <div class="tag-row">
+    <div style="font-family:'Syne',sans-serif; font-size:0.7rem; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:#FF5C00; border:1px solid #FF5C00; padding:6px 16px;">🔥 Bangalore's Private Hustler Network</div>
+  </div>
+  <div class="tag-row" style="margin-top:10px;">
+    <div style="background:#FFD000; color:#0A0A0A; font-family:'Syne',sans-serif; font-weight:800; font-size:0.7rem; letter-spacing:2px; padding:5px 16px; text-transform:uppercase;">Est. Bangalore 2025</div>
+    <div style="background:#FF5C00; color:#fff; font-family:'Syne',sans-serif; font-weight:800; font-size:0.7rem; letter-spacing:2px; padding:5px 16px; text-transform:uppercase; clip-path: polygon(5px 0%, 100% 0%, calc(100% - 5px) 100%, 0% 100%);">Claim Early Bird →</div>
+  </div>
+</div>
+
+<!-- CARDS -->
+<div class="kit-section">
+  <div class="section-label">06 — Card Components</div>
+  <div class="card-row">
+    <div class="kit-card">
+      <div class="card-icon">🎯</div>
+      <div class="card-title">Standard Card</div>
+      <div class="card-body">Used for benefits, features, and information blocks. Dark surface with orange border accent.</div>
+    </div>
+    <div class="kit-card featured">
+      <div class="card-icon">⚡</div>
+      <div class="card-title">Featured Card</div>
+      <div class="card-body">Highlighted variant in brand orange. Used to call out the most important item in a grid.</div>
+    </div>
+    <div class="kit-card" style="border-top:3px solid #FF5C00; border-color:rgba(255,92,0,0.12);">
+      <div class="card-icon">💼</div>
+      <div class="card-title">Hover Card</div>
+      <div class="card-body">Cards with orange top border on hover. Used in problem sections and feature lists.</div>
+    </div>
+  </div>
+</div>
+
+<!-- PATTERN ELEMENTS -->
+<div class="kit-section">
+  <div class="section-label">07 — Pattern & Texture Elements</div>
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:16px;">
+    <div>
+      <div class="grid-sample">
+        <div class="grid-lines-inner"></div>
+        <div class="grid-label">Grid Lines</div>
+        <div style="position:relative;z-index:1;font-family:'DM Sans',sans-serif;font-size:0.8rem;color:#555;margin-top:4px;">Used on hero sections as background texture</div>
+      </div>
+    </div>
+    <div>
+      <div class="marquee-sample">
+        <div class="marquee-inner">GIGS &nbsp;·&nbsp; INTERNSHIPS &nbsp;·&nbsp; WORKSHOPS &nbsp;·&nbsp; NETWORKING &nbsp;·&nbsp; COMMUNITY</div>
+      </div>
+      <div style="background:#0A0A0A;border:1px solid rgba(255,92,0,0.12);border-top:none;padding:12px 16px;">
+        <div style="font-family:'DM Sans',sans-serif;font-size:0.78rem;color:#555;">Marquee ticker — full orange background, Bebas Neue, white text with dot separators</div>
+      </div>
+    </div>
+  </div>
+  <div style="margin-top:16px; background:rgba(255,92,0,0.04); border:1px solid rgba(255,92,0,0.12); padding:32px; position:relative; overflow:hidden;">
+    <div style="position:absolute;inset:0;background:radial-gradient(ellipse 65% 55% at 85% 40%, rgba(255,92,0,0.12) 0%, transparent 70%);"></div>
+    <div style="position:relative; font-family:'DM Sans',sans-serif; font-size:0.82rem; color:#555; z-index:1;">Radial orange glow — used as hero background atmosphere. Opacity 0.12 on #FF5C00.</div>
+  </div>
+</div>
+
+<!-- SPACING -->
+<div class="kit-section">
+  <div class="section-label">08 — Spacing System</div>
+  <div class="spacing-row">
+    <div class="sp-item"><div class="sp-block" style="height:8px;"></div><div class="sp-val">8px</div><div class="sp-label">XS</div></div>
+    <div class="sp-item"><div class="sp-block" style="height:12px;"></div><div class="sp-val">12px</div><div class="sp-label">SM</div></div>
+    <div class="sp-item"><div class="sp-block" style="height:16px;"></div><div class="sp-val">16px</div><div class="sp-label">Base</div></div>
+    <div class="sp-item"><div class="sp-block" style="height:24px;"></div><div class="sp-val">24px</div><div class="sp-label">MD</div></div>
+    <div class="sp-item"><div class="sp-block" style="height:36px;"></div><div class="sp-val">36px</div><div class="sp-label">LG</div></div>
+    <div class="sp-item"><div class="sp-block" style="height:48px;"></div><div class="sp-val">48px</div><div class="sp-label">XL</div></div>
+    <div class="sp-item"><div class="sp-block" style="height:64px;"></div><div class="sp-val">64px</div><div class="sp-label">2XL</div></div>
+    <div class="sp-item"><div class="sp-block" style="height:100px;"></div><div class="sp-val">100px</div><div class="sp-label">Section</div></div>
+  </div>
+</div>
+
+<!-- ICON USAGE -->
+<div class="kit-section">
+  <div class="section-label">09 — Icon Usage</div>
+  <div class="icon-grid">
+    <div class="icon-item"><div class="icon-box">🎯</div><div class="icon-label">Gigs</div></div>
+    <div class="icon-item"><div class="icon-box">⚡</div><div class="icon-label">Events</div></div>
+    <div class="icon-item"><div class="icon-box">💼</div><div class="icon-label">Internships</div></div>
+    <div class="icon-item"><div class="icon-box">🛠️</div><div class="icon-label">Workshops</div></div>
+    <div class="icon-item"><div class="icon-box">🤝</div><div class="icon-label">Network</div></div>
+    <div class="icon-item"><div class="icon-box">📣</div><div class="icon-label">Spotlight</div></div>
+    <div class="icon-item"><div class="icon-box">🚀</div><div class="icon-label">Launch</div></div>
+    <div class="icon-item"><div class="icon-box">🔥</div><div class="icon-label">Brand</div></div>
+    <div class="icon-item"><div class="icon-box">📍</div><div class="icon-label">Location</div></div>
+    <div class="icon-item"><div class="icon-box">📱</div><div class="icon-label">Contact</div></div>
+    <div class="icon-item"><div class="icon-box">📷</div><div class="icon-label">Photo</div></div>
+    <div class="icon-item"><div class="icon-box">✅</div><div class="icon-label">Approve</div></div>
+  </div>
+  <div style="margin-top:20px; font-family:'DM Sans',sans-serif; font-size:0.82rem; color:#555; line-height:1.65;">
+    Use emoji icons at 1.6–2rem inside dark card boxes. Icons sit on #161616 surfaces with 1px border at #1e1e1e. Never use coloured icon backgrounds — let the emoji carry colour.
+  </div>
+</div>
+
+<!-- USAGE RULES -->
+<div class="kit-section">
+  <div class="section-label">10 — Usage Rules</div>
+  <div class="rules-grid">
+    <div class="rule-box do">
+      <div class="rule-head do-head">✓ Do</div>
+      <ul class="rule-list">
+        <li>Use Bebas Neue for all display headings and hero text</li>
+        <li>Keep orange (#FF5C00) as the dominant accent — never dilute with other brand colours</li>
+        <li>Use yellow (#FFD000) only for secondary accents, badges, and the H in YHN</li>
+        <li>Apply angled clip-path to all CTA buttons</li>
+        <li>Use DM Sans for all body copy at 1.7+ line-height</li>
+        <li>Keep backgrounds dark — #0A0A0A, #111, #161616 only</li>
+        <li>Use grid-line textures behind hero text for depth</li>
+        <li>Keep section labels in Syne 700, uppercase, 3px letter-spacing, orange colour</li>
+        <li>Use the marquee strip on orange background to separate major sections</li>
+      </ul>
+    </div>
+    <div class="rule-box dont">
+      <div class="rule-head dont-head">✗ Don't</div>
+      <ul class="rule-list">
+        <li>Don't use white or light backgrounds on any digital material</li>
+        <li>Don't use Inter, Roboto, or system fonts — brand fonts only</li>
+        <li>Don't use more than two accent colours per layout</li>
+        <li>Don't stretch or distort the YHN logo</li>
+        <li>Don't use orange text on orange backgrounds</li>
+        <li>Don't use rounded corners on elements — YHN is sharp and angular</li>
+        <li>Don't use gradients on buttons — flat solid colours only</li>
+        <li>Don't reduce yellow to a background fill — it's an accent only</li>
+        <li>Don't change the Y-H-N colour split — Y is orange, H is yellow, N is orange</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- TAGLINE -->
+<div class="kit-section">
+  <div class="section-label">11 — Tagline & Voice</div>
+  <div style="padding:40px; border:1px solid rgba(255,92,0,0.15); background:#111;">
+    <div style="font-family:'Bebas Neue',sans-serif; font-size:2.8rem; color:#F5F5F0; letter-spacing:1px; line-height:1;">WHERE HUSTLERS MEET <span style="color:#FF5C00;">OPPORTUNITIES</span></div>
+    <div style="margin-top:24px; display:flex; gap:40px; flex-wrap:wrap;">
+      <div>
+        <div style="font-family:'Syne',sans-serif; font-size:0.68rem; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:#444; margin-bottom:8px;">Primary Tagline</div>
+        <div style="font-family:'DM Sans',sans-serif; font-size:0.9rem; color:#888;">Where Hustlers Meet Opportunities</div>
+      </div>
+      <div>
+        <div style="font-family:'Syne',sans-serif; font-size:0.68rem; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:#444; margin-bottom:8px;">Short Form</div>
+        <div style="font-family:'DM Sans',sans-serif; font-size:0.9rem; color:#888;">Hustle. Connect. Grow.</div>
+      </div>
+      <div>
+        <div style="font-family:'Syne',sans-serif; font-size:0.68rem; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:#444; margin-bottom:8px;">Location Tag</div>
+        <div style="font-family:'DM Sans',sans-serif; font-size:0.9rem; color:#888;">Bangalore's Private Hustler Network</div>
+      </div>
+      <div>
+        <div style="font-family:'Syne',sans-serif; font-size:0.68rem; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:#444; margin-bottom:8px;">Voice</div>
+        <div style="font-family:'DM Sans',sans-serif; font-size:0.9rem; color:#888;">Bold. Direct. Energetic. No fluff.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="kit-footer">
+  <div>
+    <div class="kit-footer-logo">Y<span>H</span>N</div>
+    <div style="font-family:'DM Sans',sans-serif;font-size:0.75rem;color:#333;margin-top:4px;">Youth Hustle Network · Brand Design Kit v1.0</div>
+  </div>
+  <div class="kit-footer-copy">For internal use · Bangalore, India · 2025</div>
+</div>
+
+</body>
+</html>
