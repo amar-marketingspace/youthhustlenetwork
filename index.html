@@ -583,14 +583,46 @@
           </div>
         </div>
         <div class="form-row">
-          <div class="form-group">
+          <div class="form-group" style="grid-column:1 / -1;">
             <label>Phone Number *</label>
-            <input type="tel" id="fphone" placeholder="+91 XXXXX XXXXX" required/>
+          
+            <div style="display:flex; gap:10px;">
+          
+              <input
+                type="text"
+                id="fdial"
+                list="countryCodes"
+                placeholder="+91"
+                value="+91"
+                required
+                style="width:130px;"
+              />
+          
+              <datalist id="countryCodes">
+                <option value="+91">India</option>
+                <option value="+1">USA / Canada</option>
+                <option value="+44">UK</option>
+                <option value="+971">UAE</option>
+                <option value="+65">Singapore</option>
+                <option value="+61">Australia</option>
+                <option value="+49">Germany</option>
+                <option value="+33">France</option>
+              </datalist>
+          
+              <input
+                type="tel"
+                id="fphone"
+                placeholder="Phone number"
+                required
+                style="flex:1;"
+              />
+          
+            </div>
           </div>
-          <div class="form-group">
-            <label>Email</label>
-            <input type="email" id="femail" placeholder="you@email.com"/>
-          </div>
+        </div>
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" id="femail" placeholder="you@email.com"/>
         </div>
         <div class="form-group">
           <label>Your Primary Skill *</label>
@@ -650,33 +682,47 @@
 
   // inquiry form
   document.getElementById('inquiryForm').addEventListener('submit', async function(e) {
-    e.preventDefault();
+  e.preventDefault();
 
-    const name  = document.getElementById('fname').value.trim();
-    const age   = document.getElementById('fage').value.trim();
-    const phone = document.getElementById('fphone').value.trim();
-    const email = document.getElementById('femail').value.trim();
-    const skill = document.getElementById('fskill').value;
-    const why   = document.getElementById('fwhy').value.trim();
+  const name = document.getElementById('fname').value.trim();
+  const age = document.getElementById('fage').value.trim();
+  const countryCode = document.getElementById('fdial').value.trim();
+  const phone = document.getElementById('fphone').value.trim();
+  const email = document.getElementById('femail').value.trim();
+  const skill = document.getElementById('fskill').value;
+  const why = document.getElementById('fwhy').value.trim();
 
-    if(!name || !age || !phone || !skill || !why) {
-      alert('Please fill all required fields.');
-      return;
-    }
+  if (!name || !age || !countryCode || !phone || !skill || !why) {
+    alert('Please fill all required fields.');
+    return;
+  }
 
-    const submitBtn = document.querySelector('.form-submit');
-    submitBtn.textContent = 'Sending...';
-    submitBtn.disabled = true;
+  if (!countryCode.startsWith('+')) {
+    alert('Country code must start with +');
+    return;
+  }
 
-    const SHEET_URL = 'https://script.google.com/macros/s/AKfycbxXS8nzjFSL8WKqA_KREVLUXehNh0Gs6rZCmMlbWOlUHLndrnJyt1sRHm-0YJMQJu7tJg/exec';
+  const submitBtn = document.querySelector('.form-submit');
+  submitBtn.textContent = 'Sending...';
+  submitBtn.disabled = true;
 
-    try {
-      await fetch(SHEET_URL, {
-        method: 'POST',
-        mode: 'no-cors',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name, age, phone, email, skill, why })
-      });
+  const SHEET_URL = 'https://script.google.com/macros/s/AKfycbw9S3vpFrbUYFU7Ru5wlGE06qnqyuoKkAinUSjpteZwnUDKOJ_a7zVsnJl9VUx3D0AG_Q/exec';
+
+  try {
+    await fetch(SHEET_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        name,
+        age,
+        countryCode,
+        phone,
+        email,
+        skill,
+        why
+      })
+    });
 
       // Show success message
       document.getElementById('inquiryForm').innerHTML = `
