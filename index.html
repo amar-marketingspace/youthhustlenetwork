@@ -559,8 +559,8 @@
   <h2 class="section-title reveal">DROP US A <span class="acc">MESSAGE</span></h2>
   <div class="form-wrap">
     <div class="form-left reveal">
-      <h3>WE'LL GET BACK<br>TO YOU ON<br><span style="color:var(--orange)">WHATSAPP.</span></h3>
-      <p>Fill in your details and your message goes directly to us on WhatsApp. We respond fast — usually within a few hours.</p>
+      <h3>DROP YOUR<br>DETAILS.<br><span style="color:var(--orange)">WE'LL REACH OUT.</span></h3>
+<p>Fill in the form and we'll get back to you on WhatsApp within a few hours. No spam, no fluff.</p>
       <div class="contact-info">
         <div class="contact-row"><span class="contact-icon"><i data-lucide="map-pin"></i></span>Bangalore, Karnataka, India</div>
         <div class="contact-row"><span class="contact-icon"><i data-lucide="smartphone"></i></span>+91 83174 66232</div>
@@ -612,7 +612,7 @@
           <label>Why do you want to join YHN? *</label>
           <textarea id="fwhy" placeholder="Tell us what you're looking for — gigs, network, workshops, internships, events..." required></textarea>
         </div>
-        <button type="submit" class="form-submit">📲 Send Message on WhatsApp →</button>
+        <button type="submit" class="form-submit">📲 Send Us a Message →</button>
       </form>
     </div>
   </div>
@@ -648,26 +648,71 @@
   }, { threshold: 0.08 });
   document.querySelectorAll('.reveal').forEach(r => observer.observe(r));
 
-  // WhatsApp inquiry form
-  document.getElementById('inquiryForm').addEventListener('submit', function(e) {
+  // inquiry form
+  document.getElementById('inquiryForm').addEventListener('submit', async function(e) {
     e.preventDefault();
+
     const name  = document.getElementById('fname').value.trim();
     const age   = document.getElementById('fage').value.trim();
     const phone = document.getElementById('fphone').value.trim();
     const email = document.getElementById('femail').value.trim();
     const skill = document.getElementById('fskill').value;
     const why   = document.getElementById('fwhy').value.trim();
-    if(!name || !age || !phone || !skill || !why) { alert('Please fill all required fields.'); return; }
-    const msg =
-      `🔥 *YHN Enquiry*\n\n` +
-      `👤 *Name:* ${name}\n` +
-      `🎂 *Age:* ${age}\n` +
-      `📱 *Phone:* ${phone}\n` +
-      `📧 *Email:* ${email || 'Not provided'}\n` +
-      `🛠️ *Skill:* ${skill}\n\n` +
-      `💬 *Why YHN:*\n${why}\n\n` +
-      `_Sent via YHN Website_`;
-    window.open(`https://wa.me/918317466232?text=${encodeURIComponent(msg)}`, '_blank');
+
+    if(!name || !age || !phone || !skill || !why) {
+      alert('Please fill all required fields.');
+      return;
+    }
+
+    const submitBtn = document.querySelector('.form-submit');
+    submitBtn.textContent = 'Sending...';
+    submitBtn.disabled = true;
+
+    const SHEET_URL = 'https://script.google.com/macros/s/AKfycbxXS8nzjFSL8WKqA_KREVLUXehNh0Gs6rZCmMlbWOlUHLndrnJyt1sRHm-0YJMQJu7tJg/exec';
+
+    try {
+      await fetch(SHEET_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, age, phone, email, skill, why })
+      });
+
+      // Show success message
+      document.getElementById('inquiryForm').innerHTML = `
+        <div style="
+          padding: 48px 32px;
+          border: 1px solid rgba(255,92,0,0.3);
+          background: rgba(255,92,0,0.05);
+          text-align: center;
+        ">
+          <div style="font-size:2.5rem; margin-bottom:16px;">🔥</div>
+          <div style="
+            font-family:'Bebas Neue',sans-serif;
+            font-size:2rem; letter-spacing:2px;
+            color:#FF5C00; margin-bottom:12px;
+          ">MESSAGE RECEIVED!</div>
+          <p style="
+            font-family:'DM Sans',sans-serif;
+            font-size:0.92rem; color:#888; line-height:1.7;
+          ">
+            Thanks <strong style="color:#f5f5f0;">${name}</strong> — we've got your enquiry.<br/>
+            We'll hit you up on WhatsApp within a few hours. Stay hustling. 🚀
+          </p>
+          <div style="
+            margin-top:24px;
+            font-family:'Syne',sans-serif; font-weight:700;
+            font-size:0.65rem; letter-spacing:2px;
+            text-transform:uppercase; color:#444;
+          ">Youth Hustle Network · Bangalore</div>
+        </div>
+      `;
+
+    } catch(err) {
+      submitBtn.textContent = '📲 Send Message →';
+      submitBtn.disabled = false;
+      alert('Something went wrong. Please try again or WhatsApp us directly.');
+    }
   });
 </script>
   <script src="https://unpkg.com/lucide@0.383.0/dist/umd/lucide.min.js"></script>
