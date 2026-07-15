@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register Free — Youth Hustle Network</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Syne:wght@400;600;700;800&family=DM+Sans:wght@300;400;500&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --black: #0a0a0a;
+        --dark: #111111;
+        --card: #161616;
+        --orange: #ff5c00;
+        --orange-glow: #ff7a2a;
+        --yellow: #ffd000;
+        --white: #f5f5f0;
+        --muted: #888;
+        --border: rgba(255, 92, 0, 0.15);
+      }
+      *,
+      *::before,
+      *::after {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        background: var(--black);
+        color: var(--white);
+        font-family: "DM Sans", sans-serif;
+        overflow-x: hidden;
+      }
+
+      /* NAV */
+      nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 100;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 20px 6vw;
+        background: rgba(10, 10, 10, 0.88);
+        backdrop-filter: blur(14px);
+        border-bottom: 1px solid var(--border);
+      }
+      .logo {
+        font-family: "Bebas Neue", sans-serif;
+        font-size: 2rem;
+        letter-spacing: 4px;
+        color: var(--orange);
+        text-decoration: none;
+      }
+      .logo span {
+        color: var(--yellow);
+      }
+      .nav-cta {
+        background: transparent;
+        color: var(--white);
+        font-family: "Syne", sans-serif;
+        font-weight: 700;
+        font-size: 0.8rem;
+        letter-spacing: 1px;
+        padding: 9px 22px;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        cursor: pointer;
+        text-decoration: none;
+        transition: all 0.2s;
+      }
+      .nav-cta:hover {
+        border-color: var(--orange);
+        color: var(--orange);
+      }
+
+      /* INVITE BANNER */
+      .invite-banner {
+        margin-top: 73px;
+        background: var(--orange);
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        padding: 11px 6vw;
+        text-align: center;
+        font-family: "Syne", sans-serif;
+        font-weight: 700;
+        font-size: 0.78rem;
+        letter-spacing: 0.5px;
+      }
+      .invite-banner svg {
+        width: 16px;
+        height: 16px;
+        flex-shrink: 0;
+        stroke: #fff;
+      }
+      @media (max-width: 600px) {
+        .invite-banner {
+          font-size: 0.7rem;
+          padding: 10px 5vw;
+        }
+      }
+
+      /* HERO */
+      .hero {
+        min-height: 82vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 70px 6vw 60px;
+        position: relative;
+        overflow: hidden;
+      }
+      .hero-bg {
+        position: absolute;
+        inset: 0;
+        background: radial-gradient(
+            ellipse 65% 55% at 85% 30%,
+            rgba(255, 92, 0, 0.14) 0%,
+            transparent 70%
+          ),
+          radial-gradient(
+            ellipse 40% 40% at 10% 90%,
+            rgba(255, 208, 0, 0.06) 0%,
+            transparent 60%
+          );
+      }
+      .hero-grid-lines {
+        position: absolute;
+        inset: 0;
+        opacity: 0.04;
+        background-image: linear-gradient(
+            rgba(255, 255, 255, 0.4) 1px,
+            transparent 1px
+          ),
+          linear-gradient(90deg, rgba(255, 255, 255, 0.4) 1px, transparent 1px);
+        background-size: 60px 60px;
+      }
+      .hero-tag {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        font-family: "Syne", sans-serif;
+        font-size: 0.75rem;
+        font-weight: 700;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: var(--black);
+        background: var(--yellow);
+        padding: 7px 16px;
+        margin-bottom: 28px;
+        width: fit-content;
+        animation: fadeUp 0.8s ease both;
+      }
+      .hero-tag svg {
+        width: 14px;
+        height: 14px;
+        stroke: var(--black);
+        flex-shrink: 0;
+      }
+      .icon {
+        display: inline-block;
+        vertical-align: middle;
+      }
+      .hero h1 {
+        font-family: "Bebas Neue", sans-serif;
+        font-size: clamp(3.2rem, 9vw, 7.2rem);
+        line-height: 0.94;
+        letter-spacing: 2px;
+        max-width: 900px;
+        animation: fadeUp 0.9s 0.1s ease both;
+      }
+      .hero h1 .accent {
+        color: var(--orange);
+      }
+      .hero h1 .accent2 {
+        color: var(--yellow);
+      }
+      .hero-sub {
+        font-size: clamp(0.95rem, 1.8vw, 1.15rem);
+        color: #aaa;
+        max-width: 560px;
+        margin-top: 22px;
+        line-height: 1.75;
+        animation: fadeUp 1s 0.2s ease both;
+      }
+      .hero-ctas {
+        display: flex;
+        gap: 16px;
+        flex-wrap: wrap;
+        margin-top: 36px;
+        animation: fadeUp 1s 0.3s ease both;
+      }
+      .btn-primary {
+        background: var(--orange);
+        color: #fff;
+        font-family: "Syne", sans-serif;
+        font-weight: 700;
+        font-size: 0.95rem;
+        letter-spacing: 1px;
+        padding: 17px 38px;
+        border: none;
+        cursor: pointer;
+        text-decoration: none;
+        clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+        transition: all 0.2s;
+        display: inline-block;
+      }
+      .btn-primary:hover {
+        background: var(--orange-glow);
+        transform: translateY(-2px);
+      }
+      .hero-note {
+        margin-top: 22px;
+        font-size: 0.8rem;
+        color: #666;
+        animation: fadeUp 1s 0.35s ease both;
+      }
+
+      /* STEPS STRIP */
+      .steps-strip {
+        background: var(--dark);
+        border-top: 1px solid var(--border);
+        border-bottom: 1px solid var(--border);
+      }
+      .steps {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+      }
+      .step {
+        padding: 40px 28px;
+        border-right: 1px solid var(--border);
+        display: flex;
+        gap: 16px;
+        align-items: flex-start;
+      }
+      .step:last-child {
+        border-right: none;
+      }
+      @media (max-width: 700px) {
+        .steps {
+          grid-template-columns: 1fr;
+        }
+        .step {
+          border-right: none;
+          border-bottom: 1px solid var(--border);
+        }
+      }
+      .step-icon {
+        flex-shrink: 0;
+        width: 34px;
+        height: 34px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .step-icon svg {
+        width: 24px;
+        height: 24px;
+        stroke: var(--orange);
+      }
+      .step-title {
+        font-family: "Syne", sans-serif;
+        font-weight: 700;
+        font-size: 0.95rem;
+        margin-bottom: 4px;
+      }
+      .step-desc {
+        font-size: 0.85rem;
+        color: #777;
+        line-height: 1.6;
+      }
+
+      /* FORM SECTION */
+      section.reg {
+        padding: 100px 6vw;
+      }
+      .section-tag {
+        font-family: "Syne", sans-serif;
+        font-size: 0.73rem;
+        font-weight: 700;
+        letter-spacing: 3px;
+        text-transform: uppercase;
+        color: var(--orange);
+        margin-bottom: 16px;
+        text-align: center;
+      }
+      .section-title {
+        font-family: "Bebas Neue", sans-serif;
+        text-align: center;
+        font-size: clamp(2.4rem, 5.5vw, 4.4rem);
+        line-height: 0.98;
+        letter-spacing: 1px;
+      }
+      .section-title .acc {
+        color: var(--orange);
+      }
+      .reg-sub {
+        text-align: center;
+        color: #777;
+        max-width: 520px;
+        margin: 18px auto 0;
+        font-size: 0.95rem;
+        line-height: 1.7;
+      }
+
+      .reg-box {
+        max-width: 640px;
+        margin: 56px auto 0;
+        background: var(--card);
+        border: 1px solid var(--border);
+        padding: 48px 44px;
+        position: relative;
+      }
+      @media (max-width: 600px) {
+        .reg-box {
+          padding: 36px 24px;
+        }
+      }
+      form {
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+      }
+      .form-group {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+      }
+      .form-row {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 14px;
+      }
+      .form-row.phone-row {
+        grid-template-columns: 130px 1fr;
+      }
+      @media (max-width: 500px) {
+        .form-row {
+          grid-template-columns: 1fr;
+        }
+        .form-row.phone-row {
+          grid-template-columns: 1fr;
+        }
+      }
+      label {
+        font-family: "Syne", sans-serif;
+        font-size: 0.73rem;
+        font-weight: 700;
+        letter-spacing: 1px;
+        text-transform: uppercase;
+        color: #666;
+      }
+      input,
+      select,
+      textarea {
+        background: var(--black);
+        border: 1px solid rgba(255, 255, 255, 0.07);
+        color: var(--white);
+        padding: 13px 16px;
+        font-family: "DM Sans", sans-serif;
+        font-size: 0.93rem;
+        outline: none;
+        transition: border-color 0.2s;
+        width: 100%;
+      }
+      input:focus,
+      select:focus,
+      textarea:focus {
+        border-color: var(--orange);
+      }
+      select option {
+        background: var(--card);
+      }
+      textarea {
+        resize: vertical;
+        min-height: 100px;
+      }
+      .form-submit {
+        background: var(--orange);
+        color: #fff;
+        font-family: "Syne", sans-serif;
+        font-weight: 700;
+        font-size: 0.97rem;
+        letter-spacing: 1px;
+        padding: 17px 36px;
+        border: none;
+        cursor: pointer;
+        clip-path: polygon(8px 0%, 100% 0%, calc(100% - 8px) 100%, 0% 100%);
+        transition: all 0.2s;
+        margin-top: 8px;
+        width: 100%;
+      }
+      .form-submit:hover {
+        background: var(--orange-glow);
+      }
+      .form-submit:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+      }
+
+      .pay-note {
+        text-align: center;
+        margin-top: 20px;
+        font-size: 0.78rem;
+        color: #555;
+        line-height: 1.6;
+      }
+
+      /* SUCCESS STATE */
+      .success-state {
+        display: none;
+        text-align: center;
+        padding: 20px 0;
+      }
+      .success-state.visible {
+        display: block;
+        animation: fadeUp 0.5s ease both;
+      }
+      .success-icon {
+        margin-bottom: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .success-icon svg {
+        width: 56px;
+        height: 56px;
+        stroke: var(--orange);
+      }
+      .success-title {
+        font-family: "Bebas Neue", sans-serif;
+        font-size: 2.6rem;
+        letter-spacing: 1px;
+        margin-bottom: 12px;
+      }
+      .success-title .acc {
+        color: var(--orange);
+      }
+      .success-desc {
+        color: #999;
+        font-size: 0.95rem;
+        line-height: 1.7;
+        max-width: 420px;
+        margin: 0 auto;
+      }
+      .success-back {
+        display: inline-block;
+        margin-top: 28px;
+        color: var(--orange);
+        text-decoration: none;
+        font-family: "Syne", sans-serif;
+        font-weight: 700;
+        font-size: 0.85rem;
+        letter-spacing: 1px;
+      }
+
+      /* FOOTER */
+      footer {
+        background: var(--black);
+        padding: 40px 6vw 30px;
+        border-top: 1px solid var(--border);
+        text-align: center;
+      }
+      .footer-logo {
+        font-family: "Bebas Neue", sans-serif;
+        font-size: 1.8rem;
+        letter-spacing: 4px;
+        color: var(--orange);
+      }
+      .footer-logo span {
+        color: var(--yellow);
+      }
+      .footer-tagline {
+        color: #555;
+        font-size: 0.82rem;
+        margin-top: 8px;
+      }
+      .footer-links {
+        margin-top: 18px;
+        display: flex;
+        gap: 24px;
+        justify-content: center;
+        flex-wrap: wrap;
+      }
+      .footer-links a {
+        color: #555;
+        text-decoration: none;
+        font-size: 0.82rem;
+        font-family: "Syne", sans-serif;
+        font-weight: 600;
+        transition: color 0.2s;
+      }
+      .footer-links a:hover {
+        color: var(--orange);
+      }
+      .footer-copy {
+        font-size: 0.76rem;
+        color: #333;
+        margin-top: 24px;
+      }
+
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- NAV -->
+    <nav>
+      <a href="/" class="logo">Y<span>H</span>N</a>
+      <a href="/" class="nav-cta">← Back to Site</a>
+    </nav>
+
+    <div class="invite-banner">
+      <svg
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      >
+        <path
+          d="M12 2 15 8.5 22 9.3 17 14.1 18.2 21 12 17.8 5.8 21 7 14.1 2 9.3 9 8.5Z"
+        />
+      </svg>
+      This free registration is exclusive to a limited group — register your
+      interest and our team will personally reach out
+    </div>
+
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero-bg"></div>
+      <div class="hero-grid-lines"></div>
+      <div class="hero-tag">
+        <svg
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+        >
+          <path
+            d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"
+          />
+        </svg>
+        Free Registration — Limited Cohort Seats
+      </div>
+      <h1>
+        JOIN YHN.<br />
+        IT'S <span class="accent">100% FREE</span><br />
+        TO <span class="accent2">REGISTER.</span>
+      </h1>
+      <p class="hero-sub">
+        Register for free and get in line for Bangalore's private hustler
+        network — real gigs, internships, workshops, and offline events. This
+        round is open to a limited group — register your interest and our team
+        will personally reach out.
+      </p>
+      <div class="hero-ctas">
+        <a href="#form" class="btn-primary">Register Free Now →</a>
+      </div>
+      <p class="hero-note">
+        Takes under 2 minutes. Our team reviews every registration personally.
+      </p>
+    </section>
+
+    <!-- STEPS -->
+    <div class="steps-strip">
+      <div class="steps">
+        <div class="step">
+          <div class="step-icon">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M12 20h9" />
+              <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4Z" />
+            </svg>
+          </div>
+          <div>
+            <div class="step-title">Fill the Form</div>
+            <div class="step-desc">
+              Tell us who you are and what you're looking for.
+            </div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-icon">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <polyline points="20 6 9 17 4 12" />
+            </svg>
+          </div>
+          <div>
+            <div class="step-title">We Review It</div>
+            <div class="step-desc">
+              Our team goes through every registration by hand.
+            </div>
+          </div>
+        </div>
+        <div class="step">
+          <div class="step-icon">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path
+                d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"
+              />
+            </svg>
+          </div>
+          <div>
+            <div class="step-title">We Reach Out</div>
+            <div class="step-desc">
+              Expect a call or WhatsApp message from our team shortly.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- REGISTRATION FORM -->
+    <section class="reg" id="form">
+      <div class="section-tag">Free Registration</div>
+      <h2 class="section-title">CLAIM YOUR <span class="acc">SPOT.</span></h2>
+      <p class="reg-sub">
+        Fill in your details below. This free registration is exclusive to a
+        limited group — register your interest and our team will get back to you
+        soon.
+      </p>
+
+      <div class="reg-box">
+        <form id="registerForm">
+          <div class="form-row">
+            <div class="form-group">
+              <label>Full Name *</label>
+              <input type="text" id="fname" placeholder="Your name" required />
+            </div>
+            <div class="form-group">
+              <label>Age *</label>
+              <input
+                type="number"
+                id="fage"
+                placeholder="e.g. 22"
+                min="16"
+                max="75"
+                required
+              />
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Phone Number *</label>
+            <div class="form-row phone-row">
+              <select id="fcountry" required>
+                <option value="+91" selected>India</option>
+                <option value="+1">USA / Canada</option>
+                <option value="+44">UK</option>
+                <option value="+971">UAE</option>
+                <option value="+65">Singapore</option>
+                <option value="+61">Australia</option>
+                <option value="+49">Germany</option>
+                <option value="+33">France</option>
+              </select>
+              <input
+                type="tel"
+                id="fphone"
+                placeholder="XXXXX XXXXX"
+                required
+              />
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Email *</label>
+            <input
+              type="email"
+              id="femail"
+              placeholder="you@email.com"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <label>Your Primary Skill *</label>
+            <select id="fskill" required>
+              <option value="" disabled selected>Select your main skill</option>
+              <option>Design & Branding</option>
+              <option>Content Writing</option>
+              <option>Video Editing & Production</option>
+              <option>Photography</option>
+              <option>Social Media Marketing</option>
+              <option>Web / App Development</option>
+              <option>Event Management</option>
+              <option>Sales & Promotions</option>
+              <option>Influencer / Content Creator</option>
+              <option>Other</option>
+            </select>
+          </div>
+          <div class="form-group" id="skillOtherGroup" style="display: none">
+            <label>Please Specify *</label>
+            <input
+              type="text"
+              id="fskillOther"
+              placeholder="Tell us your skill"
+            />
+          </div>
+          <div class="form-group">
+            <label>Where Did You Hear About Us? *</label>
+            <select id="fsource" required>
+              <option value="" disabled selected>Select an option</option>
+              <option value="Google">Google / Search</option>
+              <option value="Instagram">Instagram</option>
+              <option value="Friend/Referral">Friend / Referral</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+          <div class="form-group" id="sourceOtherGroup" style="display: none">
+            <label>Please Specify *</label>
+            <input
+              type="text"
+              id="fsourceOther"
+              placeholder="Tell us where you heard about us"
+            />
+          </div>
+          <div class="form-group">
+            <label>Why do you want to join YHN? *</label>
+            <textarea
+              id="fwhy"
+              placeholder="Tell us what you're looking for — gigs, network, workshops, internships, events..."
+              required
+            ></textarea>
+          </div>
+          <button type="submit" class="form-submit" id="submitBtn">
+            Register Free →
+          </button>
+        </form>
+
+        <p class="pay-note">
+          Registration itself is free — you'd only ever be asked to pay if you
+          choose to take on a specific paid project later.
+        </p>
+
+        <div class="success-state" id="successState">
+          <div class="success-icon">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" />
+              <polyline points="22 4 12 14.01 9 11.01" />
+            </svg>
+          </div>
+          <div class="success-title">YOU'RE <span class="acc">IN.</span></div>
+          <p class="success-desc">
+            Thanks for registering with Youth Hustle Network. Our team will
+            contact you shortly on the details you shared.
+          </p>
+          <a href="/" class="success-back">← Back to Home</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+      <div class="footer-logo">Y<span>H</span>N</div>
+      <div class="footer-tagline">
+        Where Hustlers Meet Opportunities — Bangalore, India
+      </div>
+      <div class="footer-links">
+        <a href="/">Home</a>
+        <a href="/yhn-terms.html">Terms & Privacy</a>
+      </div>
+      <div class="footer-copy">
+        © 2025 Youth Hustle Network. All rights reserved. Bangalore, India.
+      </div>
+    </footer>
+
+    <script>
+      // ⚠️ REPLACE THIS with your deployed Google Apps Script Web App URL
+      const SCRIPT_URL =
+        "https://script.google.com/macros/s/AKfycbwsGkFLpFilhDS3UjbGDI8MIPI9oCILy_RaqyRjENthWMKXud84KlJebJe0QrE9wdzPAw/exec";
+
+      const form = document.getElementById("registerForm");
+      const submitBtn = document.getElementById("submitBtn");
+      const successState = document.getElementById("successState");
+      const skillSelect = document.getElementById("fskill");
+      const skillOtherGroup = document.getElementById("skillOtherGroup");
+      const skillOtherInput = document.getElementById("fskillOther");
+      const sourceSelect = document.getElementById("fsource");
+      const sourceOtherGroup = document.getElementById("sourceOtherGroup");
+      const sourceOtherInput = document.getElementById("fsourceOther");
+
+      skillSelect.addEventListener("change", function () {
+        if (skillSelect.value === "Other") {
+          skillOtherGroup.style.display = "flex";
+          skillOtherInput.setAttribute("required", "required");
+        } else {
+          skillOtherGroup.style.display = "none";
+          skillOtherInput.removeAttribute("required");
+          skillOtherInput.value = "";
+        }
+      });
+
+      sourceSelect.addEventListener("change", function () {
+        if (sourceSelect.value === "Other") {
+          sourceOtherGroup.style.display = "flex";
+          sourceOtherInput.setAttribute("required", "required");
+        } else {
+          sourceOtherGroup.style.display = "none";
+          sourceOtherInput.removeAttribute("required");
+          sourceOtherInput.value = "";
+        }
+      });
+
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+
+        const name = document.getElementById("fname").value.trim();
+        const age = document.getElementById("fage").value.trim();
+        const country = document.getElementById("fcountry").value;
+        const phone = document.getElementById("fphone").value.trim();
+        const email = document.getElementById("femail").value.trim();
+        const skill = skillSelect.value;
+        const skillOther = skillOtherInput.value.trim();
+        const heardAbout = sourceSelect.value;
+        const heardOther = sourceOtherInput.value.trim();
+        const why = document.getElementById("fwhy").value.trim();
+
+        if (
+          !name ||
+          !age ||
+          !phone ||
+          !email ||
+          !skill ||
+          !heardAbout ||
+          !why
+        ) {
+          alert("Please fill all required fields.");
+          return;
+        }
+        if (skill === "Other" && !skillOther) {
+          alert("Please specify your skill.");
+          return;
+        }
+        if (heardAbout === "Other" && !heardOther) {
+          alert("Please tell us where you heard about us.");
+          return;
+        }
+
+        submitBtn.disabled = true;
+        submitBtn.textContent = "Submitting...";
+
+        const payload = new FormData();
+        payload.append("name", name);
+        payload.append("age", age);
+        payload.append("countryCode", country);
+        payload.append("phone", phone);
+        payload.append("email", email);
+        payload.append(
+          "skill",
+          skill === "Other" ? "Other: " + skillOther : skill
+        );
+        payload.append(
+          "heardAbout",
+          heardAbout === "Other" ? "Other: " + heardOther : heardAbout
+        );
+        payload.append("why", why);
+        payload.append("pageSource", "Free Registration Landing Page");
+
+        fetch(SCRIPT_URL, {
+          method: "POST",
+          mode: "no-cors", // Apps Script web apps don't return CORS headers we can read;
+          // this still delivers the request, we just can't inspect the response.
+          body: payload,
+        })
+          .then(function () {
+            form.style.display = "none";
+            document.querySelector(".pay-note").style.display = "none";
+            successState.classList.add("visible");
+          })
+          .catch(function (err) {
+            console.error("Submission error:", err);
+            alert(
+              "Something went wrong sending your registration. Please try again or reach us on WhatsApp."
+            );
+            submitBtn.disabled = false;
+            submitBtn.textContent = "Register Free →";
+          });
+      });
+    </script>
+  </body>
+</html>
